@@ -22,10 +22,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
+    //의미없음.(사용하지 않는 매개변수임을 명시.)
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // TODO: 여기에 코드를 입력합니다.
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -121,6 +121,27 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
 //
 //
+
+
+POINT g_ptObjectPos = { 500,300 };
+POINT g_ptObjectScale = { 100, 100 };
+
+#include<vector>
+using std::vector;
+
+bool isLBtnDown = false;
+
+struct tObjInfo 
+{
+    POINT g_ptObjPos;
+    POINT g_ptObjScale;
+};
+
+vector<tObjInfo> g_vecInfo;
+
+POINT g_leftTop;
+POINT g_rightBottom;
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -142,17 +163,119 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
-    case WM_PAINT:
+
+    case WM_PAINT: //무효화 영역이 발생한 경우.
         {
             PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+
+            HDC hdc = BeginPaint(hWnd, &ps); // DeviceContext(그리기와 관련.)
+
+            //1. 펜, 브러쉬 생성
+            HPEN hRedPen = CreatePen(PS_DASHDOT, 1, RGB(255, 0, 0));
+            HBRUSH hRedBrush = (HBRUSH)GetStockObject(LTGRAY_BRUSH);
+
+
+            //2. 펜, 브러쉬 설정
+            // SelectObejct()
+            // 내가 만든 Pen 혹은 Brush를 HDC에 설정하고, 
+            // 이전에 사용하던 Pen, Brush를 void형 포인터로 반환.
+            HPEN hDefaultPen = (HPEN)SelectObject(hdc, hRedPen); 
+            HBRUSH hDefaultBrush = (HBRUSH)SelectObject(hdc, hRedBrush);
+
+            if (isLBtnDown) {
+                Rectangle(hdc,
+                    g_leftTop.x, g_leftTop.y,
+                    g_rightBottom.x, g_rightBottom.y);
+            }
+
+            for (int i = 0; i < g_vecInfo.size(); i++) 
+            {
+                Rectangle(hdc,
+                    g_vecInfo[i].g_ptObjPos.x - g_vecInfo[i].g_ptObjScale.x / 2,
+                    g_vecInfo[i].g_ptObjPos.y - g_vecInfo[i].g_ptObjScale.y / 2,
+                    g_vecInfo[i].g_ptObjPos.x + g_vecInfo[i].g_ptObjScale.x / 2,
+                    g_vecInfo[i].g_ptObjPos.y + g_vecInfo[i].g_ptObjScale.y / 2);
+            }
+            
+            
+            //4. 다시 default로 되돌리기.
+            SelectObject(hdc, hDefaultPen);
+            SelectObject(hdc, hDefaultBrush);
+
+            //5. 만들었던 펜, 브러쉬 삭제.
+            DeleteObject(hRedPen);
+            DeleteObject(hRedBrush);
+            
             EndPaint(hWnd, &ps);
         }
         break;
+    
+    case WM_KEYDOWN: 
+    {
+        //키 입력
+        switch (wParam)
+        {
+        case VK_UP:
+            //g_ptObjectPos.y -= 10;
+            InvalidateRect(hWnd, nullptr, true);
+            break;
+
+        case VK_DOWN:
+            //g_ptObjectPos.y += 10;
+            InvalidateRect(hWnd, nullptr, true);
+            break;
+        case VK_LEFT:
+            //g_ptObjectPos.x -= 10;
+            InvalidateRect(hWnd, nullptr, true);
+            break;
+        case VK_RIGHT:
+            //g_ptObjectPos.x += 10;
+            InvalidateRect(hWnd, nullptr, true);
+            break;
+
+        default:
+            break;
+        }
+
+    }
+        break;
+    
+    //마우스 왼쪽 클릭
+    case WM_LBUTTONDOWN:
+    {
+        g_leftTop.x = LOWORD(lParam);
+        g_leftTop.y = HIWORD(lParam);
+        isLBtnDown = true;
+    }
+        break;
+    case WM_MOUSEMOVE:
+    {
+        g_rightBottom.x = LOWORD(lParam);
+        g_rightBottom.y = HIWORD(lParam);
+        InvalidateRect(hWnd, nullptr, true);
+    }
+    break;
+
+    case WM_LBUTTONUP:
+    {
+        tObjInfo info = {};
+
+        info.g_ptObjPos.x = (g_leftTop.x + g_rightBottom.x) / 2;
+        info.g_ptObjPos.y = (g_leftTop.y + g_rightBottom.y) / 2;
+
+        info.g_ptObjScale.x = abs(g_leftTop.x - g_rightBottom.x);
+        info.g_ptObjScale.y = abs(g_leftTop.y - g_rightBottom.y);
+
+        g_vecInfo.push_back(info);
+
+        isLBtnDown = false;
+        InvalidateRect(hWnd, nullptr, true);
+    }
+    break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
+
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
