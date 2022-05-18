@@ -23,6 +23,12 @@
     <Filter Include="Engine\03. Manager\KeyMgr">
       <UniqueIdentifier>{ac65da5d-482c-4dec-a960-a89fb5a382d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object">
+      <UniqueIdentifier>{8e2736f2-20fa-4cb6-9bf9-1e7b58a40edf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\TimerMgr">
+      <UniqueIdentifier>{904a715e-37d3-4d06-9595-2145b3541272}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DawnProject.h">
@@ -47,6 +53,15 @@
       <Filter>Engine\03. Manager\KeyMgr</Filter>
     </ClInclude>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="CObject.h">
+      <Filter>Engine\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>Engine\01.Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>Engine\03. Manager\TimerMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -57,6 +72,12 @@
     </ClCompile>
     <ClCompile Include="DawnProject.cpp">
       <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>Engine\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>Engine\03. Manager\TimerMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
