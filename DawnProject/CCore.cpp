@@ -60,6 +60,10 @@ void CCore::progress()
 
 	//Manager Update
 	CTimeMgr::GetInst()->update();
+	CKeyMgr::GetInst()->update();
+
+
+
 
 	update();
 	render();
@@ -69,12 +73,14 @@ void CCore::update()
 {
 	
 	Vec2 vPos = g_obj.GetPos();
-	if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-		vPos.x -= 200.f * DeltaTimef;
+
+
+	if (CKeyMgr::GetInst()->GetKeyState(KEY::LEFT) == KEY_STATE::TAP) {
+		vPos.x -= 200.f;
 	}
-	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
+	if (CKeyMgr::GetInst()->GetKeyState(KEY::RIGHT) == KEY_STATE::TAP) {
 		//TODO
-		vPos.x += 200.f * DeltaTimef;
+		vPos.x += 200.f;
 	}
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
 		//TODO
