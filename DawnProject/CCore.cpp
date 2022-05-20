@@ -75,20 +75,21 @@ void CCore::update()
 	Vec2 vPos = g_obj.GetPos();
 
 
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::LEFT) == KEY_STATE::TAP) {
-		vPos.x -= 200.f;
-	}
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::RIGHT) == KEY_STATE::TAP) {
+	if (CKeyMgr::GetInst()->GetKeyState(KEY::LEFT) == KEY_STATE::HOLD) {
 		//TODO
-		vPos.x += 200.f;
+		vPos.x -= 200.f * DeltaTimef;
 	}
-	if (GetAsyncKeyState(VK_UP) & 0x8000) {
+	if (CKeyMgr::GetInst()->GetKeyState(KEY::RIGHT) == KEY_STATE::HOLD) {
 		//TODO
-		vPos.y -= 0.01f;
+		vPos.x += 200.f * DeltaTimef;
 	}
-	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+	if (CKeyMgr::GetInst()->GetKeyState(KEY::UP) == KEY_STATE::HOLD) {
 		//TODO
-		vPos.y += 0.01f;
+		vPos.y -= 200.f * DeltaTimef;
+	}
+	if (CKeyMgr::GetInst()->GetKeyState(KEY::DOWN) == KEY_STATE::HOLD) {
+		//TODO
+		vPos.y += 200.f * DeltaTimef;
 	}
 	g_obj.SetPos(vPos);
 	
