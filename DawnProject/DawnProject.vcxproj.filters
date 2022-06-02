@@ -32,12 +32,6 @@
     <Filter Include="Engine\05. Scene">
       <UniqueIdentifier>{878b60a4-5e26-45b8-83f2-6d0a4c0d78b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Object\NewFilter1">
-      <UniqueIdentifier>{75c29e63-9577-466f-9e40-8753621bf7b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\NewFilter2">
-      <UniqueIdentifier>{8502987a-08ef-4692-b871-b5ce25ee16f6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\04. Object\NewFilter3">
       <UniqueIdentifier>{cd0599b4-ddc3-4964-9d94-e8472b98a28d}</UniqueIdentifier>
     </Filter>
@@ -49,6 +43,12 @@
     </Filter>
     <Filter Include="Engine\05. Scene\Scene_Tool">
       <UniqueIdentifier>{ab94f4e7-5401-4ecb-a3d3-a20f50dfce75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Player">
+      <UniqueIdentifier>{75c29e63-9577-466f-9e40-8753621bf7b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Projectile">
+      <UniqueIdentifier>{8502987a-08ef-4692-b871-b5ce25ee16f6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +92,12 @@
     <ClInclude Include="CScene_Start.h">
       <Filter>Engine\05. Scene\Scene_Start</Filter>
     </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>Engine\04. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CProjectile.h">
+      <Filter>Engine\04. Object\Projectile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -117,6 +123,12 @@
     </ClCompile>
     <ClCompile Include="CScene_Start.cpp">
       <Filter>Engine\05. Scene\Scene_Start</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>Engine\04. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CProjectile.cpp">
+      <Filter>Engine\04. Object\Projectile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
