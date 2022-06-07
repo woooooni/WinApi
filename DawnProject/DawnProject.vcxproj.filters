@@ -32,9 +32,6 @@
     <Filter Include="Engine\05. Scene">
       <UniqueIdentifier>{878b60a4-5e26-45b8-83f2-6d0a4c0d78b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Object\NewFilter3">
-      <UniqueIdentifier>{cd0599b4-ddc3-4964-9d94-e8472b98a28d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\03. Manager\SceneMgr">
       <UniqueIdentifier>{bee983c2-faa6-444f-8fd7-d0435ebe0c71}</UniqueIdentifier>
     </Filter>
@@ -49,6 +46,9 @@
     </Filter>
     <Filter Include="Engine\04. Object\Projectile">
       <UniqueIdentifier>{8502987a-08ef-4692-b871-b5ce25ee16f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\CMonster">
+      <UniqueIdentifier>{cd0599b4-ddc3-4964-9d94-e8472b98a28d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +98,9 @@
     <ClInclude Include="CProjectile.h">
       <Filter>Engine\04. Object\Projectile</Filter>
     </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>Engine\04. Object\CMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -129,6 +132,9 @@
     </ClCompile>
     <ClCompile Include="CProjectile.cpp">
       <Filter>Engine\04. Object\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>Engine\04. Object\CMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
