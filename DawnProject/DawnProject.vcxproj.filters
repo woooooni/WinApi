@@ -47,7 +47,11 @@
     <Filter Include="Engine\04. Object\Projectile">
       <UniqueIdentifier>{8502987a-08ef-4692-b871-b5ce25ee16f6}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="Engine\04. Object\Monster">
+=======
+    <Filter Include="Engine\04. Object\CMonster">
+>>>>>>> 2d11748a2eab7f4333a0aab5d3d8f79b3c8bc5e5
       <UniqueIdentifier>{cd0599b4-ddc3-4964-9d94-e8472b98a28d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -99,7 +103,11 @@
       <Filter>Engine\04. Object\Projectile</Filter>
     </ClInclude>
     <ClInclude Include="CMonster.h">
+<<<<<<< HEAD
       <Filter>Engine\04. Object\Monster</Filter>
+=======
+      <Filter>Engine\04. Object\CMonster</Filter>
+>>>>>>> 2d11748a2eab7f4333a0aab5d3d8f79b3c8bc5e5
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,7 +142,11 @@
       <Filter>Engine\04. Object\Projectile</Filter>
     </ClCompile>
     <ClCompile Include="CMonster.cpp">
+<<<<<<< HEAD
       <Filter>Engine\04. Object\Monster</Filter>
+=======
+      <Filter>Engine\04. Object\CMonster</Filter>
+>>>>>>> 2d11748a2eab7f4333a0aab5d3d8f79b3c8bc5e5
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
