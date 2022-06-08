@@ -11,5 +11,10 @@ using std::vector;
 using std::string;
 using std::wstring;
 
+#include<assert.h>
+
 #include "define.h"
 #include "struct.h"
+
+
+#pragma comment(lib, "Msimg32.lib")

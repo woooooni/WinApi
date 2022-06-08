@@ -39,11 +39,16 @@ void CTimeMgr::update()
 	//2. 이전 카운트 값을 현재 카운트 값으로 갱신한다.
 	m_llPrevCount = m_llCurCount;
 
+	
+}
+
+void CTimeMgr::render()
+{
 	++m_iCallCount;
 	m_Acc += m_dDT; // DT누적.(흐른 시간을 의미)
 
 	//3. 흐른 시간(누적시간)이 1이 넘으면 1초가 경과.
-	if (m_Acc >= 1.) 
+	if (m_Acc >= 1.)
 	{
 		m_iFPS = m_iCallCount;
 		m_Acc = 0;

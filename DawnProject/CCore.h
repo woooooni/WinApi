@@ -21,7 +21,9 @@ private:
 	void render();
 
 public:
-	HWND GetMainHwnd();
+	HWND GetMainHwnd() { return m_hWnd; }
+	HDC GetMainDc() { return m_hDC; };
+	POINT GetResoultion() { return m_ptResolution; }
 };
 
 //#pragma once

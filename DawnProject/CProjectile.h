@@ -4,12 +4,13 @@ class CProjectile :
     public CObject
 {
 private:
-    float m_fdir;
+    float   m_fTheta;
+    float   m_fSpeed;
+    Vec2    m_vDir;
 
 public:
-    float GetDir();
-    void SetDir(float _dir);
-
+    void SetDir(float _fTheta);
+    void SetDir(Vec2 _vDir);
 
 public:
     virtual void update();

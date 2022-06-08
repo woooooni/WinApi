@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\xodnj\Desktop\Study\WinApi\DawnProject\x64\Debug\DawnProject.exe</FullPath>
+      <FullPath>C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\Output\bin_debug\DawnProject.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

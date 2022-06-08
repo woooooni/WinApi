@@ -1,1 +1,3 @@
 C:\Users\xodnj\Desktop\Study\WinApi\DawnProject\x64\Debug\DawnProject.exe
+C:\Users\xodnj\Desktop\Study\C++\WinApi\DawnProject\x64\Debug\DawnProject.exe
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\x64\Debug\DawnProject.exe

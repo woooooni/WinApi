@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "CScene_Start.h"
+#include "CCore.h"
 #include "CObject.h"
+#include "CPlayer.h"
+#include "CTexture.h"
+#include "CPathMgr.h"
 
 CScene_Start::CScene_Start()
 {
@@ -15,16 +19,17 @@ CScene_Start::~CScene_Start()
 void CScene_Start::Enter()
 {
 	//Object Ãß°¡
-	CObject* pObj = new CObject;
+	CPlayer* pPlayer = new CPlayer;
 
-	pObj->SetPos(Vec2(640, 384));
-	pObj->SetScale(Vec2(100.f, 100.f));
+	pPlayer->SetPos(Vec2(640, 384));
+	pPlayer->SetScale(Vec2(100.f, 100.f));
 
-	AddObject(pObj, GROUP_TYPE::DEFAULT);
+	AddObject(pPlayer, GROUP_TYPE::DEFAULT);
 
 }
 
 void CScene_Start::Exit()
 {
+
 }
 

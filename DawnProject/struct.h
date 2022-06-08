@@ -5,6 +5,33 @@ struct Vec2
 	float x;
 	float y;
 
+
+public:
+	float Length() 
+	{
+		return sqrt(x * x + y * y);
+	}
+	Vec2& Normalize() 
+	{
+		float fLen = Length();
+
+		//Exeption(0으로 나눌 때)
+		assert(fLen != 0.f);
+		
+		
+		x /= fLen; 
+		y /= fLen;
+
+		return *this;
+	}
+
+public:
+	Vec2& operator = (POINT _pt) 
+	{
+		x = (float)_pt.x;
+		y = (float)_pt.y;
+	}
+
 public:
 	Vec2()
 		:x(0.f)

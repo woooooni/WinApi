@@ -4,6 +4,7 @@
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
 #include "CSceneMgr.h"
+#include "CPathMgr.h"
 
 CCore::CCore() 
 	: m_hWnd(0)
@@ -43,6 +44,7 @@ int CCore::Init(HWND _hWnd, POINT _ptResolution)
 
 
 	//Manager ÃÊ±âÈ­
+	CPathMgr::GetInst()->Init();
 	CTimeMgr::GetInst()->Init();
 	CKeyMgr::GetInst()->Init();
 	CSceneMgr::GetInst()->Init();
@@ -75,10 +77,8 @@ void CCore::progress()
 		m_memDC, 0, 0, SRCCOPY);
 
 
+	CTimeMgr::GetInst()->render();
+
 }
 
-HWND CCore::GetMainHwnd()
-{
-	return m_hWnd;
-}
 

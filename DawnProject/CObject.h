@@ -2,8 +2,8 @@
 class CObject
 {
 private:
-	Vec2 m_vPos;
-	Vec2 m_vScale;
+	Vec2	m_vPos;
+	Vec2	m_vScale;
 
 public:
 	void SetPos(Vec2 _vPos);
@@ -13,8 +13,8 @@ public:
 	Vec2 GetScale();
 
 public:
-	void update();
-	void render(HDC _dc);
+	virtual void update()=0;
+	virtual void render(HDC _dc)=0;
 
 
 public: 

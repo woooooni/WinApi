@@ -46,9 +46,37 @@ void CKeyMgr::update()
 
 
 	
-	if (hWnd == nullptr) //윈도우 포커싱 해제상태
+	if (hWnd != nullptr) //윈도우 포커싱 상태
 	{
-		for (int i = 0; i < (int)KEY::LAST; ++i) 
+		for (int i = 0; i < (int)KEY::LAST; ++i)
+		{
+			if (GetAsyncKeyState(g_arrVK[i]) & 0x8000)
+			{
+				//키가 눌려있다.
+				if (m_vecKey[i].bPrevPushed)
+					m_vecKey[i].eState = KEY_STATE::HOLD; //이전에도 눌려있었다.
+				else
+					m_vecKey[i].eState = KEY_STATE::TAP; //이전에 눌려있지 않았다.
+
+				m_vecKey[i].bPrevPushed = true;
+			}
+			else
+			{
+				//키가 안눌려있다.
+				if (m_vecKey[i].bPrevPushed)
+					m_vecKey[i].eState = KEY_STATE::AWAY; //이전에 눌려있었다.
+				else
+					m_vecKey[i].eState = KEY_STATE::NONE; // 이전에도 안 눌려있었다.
+
+				m_vecKey[i].bPrevPushed = false;
+			}
+		}
+	}
+		
+	//윈도우 포커싱 해제상태(모든 키입력을 해제 TAP -> AWAY -> NONE
+	else 
+	{
+		for (int i = 0; i < (int)KEY::LAST; ++i)
 		{
 			m_vecKey[i].bPrevPushed = false;
 
@@ -56,33 +84,13 @@ void CKeyMgr::update()
 			{
 				m_vecKey[i].eState = KEY_STATE::AWAY;
 			}
-			else if (KEY_STATE::AWAY == m_vecKey[i].eState) 
+			else if (KEY_STATE::AWAY == m_vecKey[i].eState)
 			{
 				m_vecKey[i].eState = KEY_STATE::NONE;
 			}
 		}
-	}
 		
 
-	for (int i = 0; i < (int)KEY::LAST; ++i) 
-	{
-		if (GetAsyncKeyState(g_arrVK[i]) & 0x8000) 
-		{
-			if (m_vecKey[i].bPrevPushed) 
-				m_vecKey[i].eState = KEY_STATE::HOLD;
-			else
-				m_vecKey[i].eState = KEY_STATE::TAP;
-
-			m_vecKey[i].bPrevPushed = true;
-		}
-		else 
-		{
-			if (m_vecKey[i].bPrevPushed) 
-				m_vecKey[i].eState = KEY_STATE::AWAY;
-			else 
-				m_vecKey[i].eState = KEY_STATE::NONE;
-
-			m_vecKey[i].bPrevPushed = false;
-		}
 	}
+	
 }
