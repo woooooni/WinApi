@@ -4,7 +4,9 @@
 #include "CPathMgr.h"
 #include "CTimeMgr.h"
 #include "CTexture.h"
-
+#include "CProjectile.h"
+#include "CSceneMgr.h"
+#include "CScene.h"
 
 CPlayer::CPlayer()
 	:m_pTex()
@@ -45,6 +47,13 @@ void CPlayer::update()
 	if (KEY_TAP(KEY::SPACE))
 	{
 		//TODO
+		CProjectile* projectile = new CProjectile;
+		projectile->SetPos(GetPos());
+		projectile->SetScale(Vec2(20, 20));
+		projectile->SetDir(Vec2(1, 0));
+		CScene* pCurScene = CSceneMgr::GetInst()->GetCurrScene();
+		pCurScene->AddObject(projectile, GROUP_TYPE::PROJECTILE);
+
 	}
 
 	SetPos(_vecPos);

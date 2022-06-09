@@ -24,7 +24,7 @@ public:
 	virtual void Exit() = 0; // 순수 가상함수 해당 Scene에서 벗어날 경우 호출.
 
 
-protected:
+public:
 	void AddObject(CObject* _obj, GROUP_TYPE _type);
 
 
