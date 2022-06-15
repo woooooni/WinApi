@@ -1,8 +1,2 @@
-﻿  CPlayer.cpp
-C:\Users\UC\Desktop\1612035\WinApi\DawnProject\CPlayer.cpp(32,22): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\UC\Desktop\1612035\WinApi\DawnProject\CPlayer.cpp(36,22): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\UC\Desktop\1612035\WinApi\DawnProject\CPlayer.cpp(40,22): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\UC\Desktop\1612035\WinApi\DawnProject\CPlayer.cpp(44,22): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\UC\Desktop\1612035\WinApi\DawnProject\CPlayer.cpp(75,20): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\UC\Desktop\1612035\WinApi\DawnProject\CPlayer.cpp(74,20): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  DawnProject.vcxproj -> C:\Users\UC\Desktop\1612035\winapi\DawnProject\Output\bin_debug\DawnProject.exe
+﻿  DawnProject.cpp
+  DawnProject.vcxproj -> C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\Output\bin_debug\DawnProject.exe

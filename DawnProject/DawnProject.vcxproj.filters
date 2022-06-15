@@ -62,6 +62,9 @@
     <Filter Include="Engine\03. Manager\PathMgr">
       <UniqueIdentifier>{2a9a2d91-24f2-4057-a72f-6d1b41dcae80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\ResourceMgr">
+      <UniqueIdentifier>{78dcb157-79bd-4114-bc43-5538c51c66d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DawnProject.h">
@@ -124,6 +127,9 @@
     <ClInclude Include="CPathMgr.h">
       <Filter>Engine\03. Manager\PathMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CResMgr.h">
+      <Filter>Engine\03. Manager\ResourceMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -167,6 +173,9 @@
     </ClCompile>
     <ClCompile Include="CPathMgr.cpp">
       <Filter>Engine\03. Manager\PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CResMgr.cpp">
+      <Filter>Engine\03. Manager\ResourceMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

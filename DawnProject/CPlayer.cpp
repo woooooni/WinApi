@@ -7,21 +7,19 @@
 #include "CProjectile.h"
 #include "CSceneMgr.h"
 #include "CScene.h"
+#include "CResMgr.h"
 
 CPlayer::CPlayer()
 	:m_pTex()
 {
 	//Texture·Îµù
-	m_pTex = new CTexture;
-	wstring istrFilePath = CPathMgr::GetInst()->GetContentPath();
-	istrFilePath += L"texture\\Player.bmp";
-	m_pTex->Load(istrFilePath);
+	m_pTex = CResMgr::GetInst()->
+		LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
 }
 
 CPlayer::~CPlayer()
 {
-	if (nullptr != m_pTex)
-		delete m_pTex;
+	
 }
 
 void CPlayer::update()
