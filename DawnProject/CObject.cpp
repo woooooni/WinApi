@@ -2,37 +2,42 @@
 #include "CObject.h"
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
+#include "CCollider.h"
+
 
 CObject::CObject()
 	:m_vPos{}
 	, m_vScale{}
+	, m_pCollider{}
 {
 	
 }
 
 CObject::~CObject()
 {
-		
+	if (nullptr != m_pCollider)
+		delete m_pCollider;
 }
 
 
-void CObject::SetPos(Vec2 _vPos)
+void CObject::CreateCollider()
 {
-	m_vPos = _vPos;
+	m_pCollider = new CCollider;
+	m_pCollider->m_pOwner = this;
 }
 
-void CObject::SetScale(Vec2 _vScale)
+void CObject::update()
 {
-	m_vScale = _vScale;
 }
 
-Vec2 CObject::GetPos()
+void CObject::finalupdate()
 {
-	return m_vPos;
+	if (nullptr != m_pCollider)
+		m_pCollider->finalupdate();
 }
 
-Vec2 CObject::GetScale()
+void CObject::render(HDC _dc)
 {
-	return m_vScale;
+
 }
 

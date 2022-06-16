@@ -15,6 +15,8 @@ CPlayer::CPlayer()
 	//Texture·Îµù
 	m_pTex = CResMgr::GetInst()->
 		LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
+
+	CreateCollider();
 }
 
 CPlayer::~CPlayer()
@@ -51,7 +53,6 @@ void CPlayer::update()
 		projectile->SetDir(Vec2(1, 0));
 		CScene* pCurScene = CSceneMgr::GetInst()->GetCurrScene();
 		pCurScene->AddObject(projectile, GROUP_TYPE::PROJECTILE);
-
 	}
 
 	SetPos(_vecPos);

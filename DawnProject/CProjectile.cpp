@@ -8,11 +8,12 @@ CProjectile::CProjectile()
 	,m_fSpeed(600.f)
 {
 	m_vDir.Normalize();
+	CreateCollider();
 }
 
 CProjectile::~CProjectile()
 {
-
+	
 }
 
 void CProjectile::update()
