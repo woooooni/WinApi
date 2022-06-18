@@ -19,7 +19,7 @@ void CPathMgr::Init()
 	//!주의
 	// VisualStudio라는 도구를 사용해 빌드했기 때문에 디버깅으로 실행 시, 프로젝트 이름으로 잡힘.
 	// 빌드 후 배포하는 경로는 다름.
-	int iLen = wcslen(m_szContentPath);
+	int iLen = (int)wcslen(m_szContentPath);
 
 	for (int i = iLen - 1; 0 <= i; --i)
 	{

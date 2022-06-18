@@ -18,12 +18,14 @@ public:
 	Vec2 GetScale() { return m_vScale; }
 
 	void CreateCollider();
+	CCollider* GetCollider() { return m_pCollider; }
 
 public:
-	virtual void update();
+	virtual void update()=0;
 	virtual void finalupdate() final;
+
 	virtual void render(HDC _dc);
-	
+	void component_render(HDC _dc);
 
 public: 
 	CObject();
