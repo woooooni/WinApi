@@ -26,8 +26,15 @@ public:
 
 
 public:
-	void AddObject(CObject* _obj, GROUP_TYPE _type);
+	void AddObject(CObject* _obj, GROUP_TYPE _eType) 
+	{ 
+		m_arrObj[(UINT)_eType].push_back(_obj); 
+	}
 
+	const vector<CObject*>& GetGruopObejct(GROUP_TYPE _eType) 
+	{ 
+		return m_arrObj[(UINT)_eType]; 
+	}
 
 public:
 	CScene();

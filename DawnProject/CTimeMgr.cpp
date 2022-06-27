@@ -33,11 +33,24 @@ void CTimeMgr::update()
 	QueryPerformanceCounter(&m_llCurCount);
 
 	//1. 이전 프레임의 카운팅과, 현재 프레임 카운팅 값의 차이를 구하고, 초당 카운트 횟수를 나눈다.
+	//QuadPart는 union 타입.
+	//union => 구조체와 비슷.
+
 	m_dDT = (double)(m_llCurCount.QuadPart - m_llPrevCount.QuadPart) / (double)m_llFrequency.QuadPart;
 	
 
 	//2. 이전 카운트 값을 현재 카운트 값으로 갱신한다.
 	m_llPrevCount = m_llCurCount;
+
+
+
+	//디버그에서만 동작.
+#ifdef _DEBUG
+	if (m_dDT > (1. / 60.))
+		m_dDT = (1. / 60.);
+
+#endif // _DEBUG{}
+
 
 	
 }

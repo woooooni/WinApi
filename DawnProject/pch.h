@@ -16,10 +16,17 @@ using std::make_pair;
 using std::string;
 using std::wstring;
 
+#pragma comment(lib, "Msimg32.lib")
+
+
 #include<assert.h>
+#include<math.h>
+
 
 #include "define.h"
 #include "struct.h"
 
+#include "func.h"
 
-#pragma comment(lib, "Msimg32.lib")
+
+

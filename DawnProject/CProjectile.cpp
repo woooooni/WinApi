@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CProjectile.h"
 #include "CTimeMgr.h"
+#include "CCollider.h"
 
 CProjectile::CProjectile()
 	:m_fTheta(PI / 2.f)
@@ -9,6 +10,7 @@ CProjectile::CProjectile()
 {
 	m_vDir.Normalize();
 	CreateCollider();
+	GetCollider()->SetScale(Vec2(10.f, 10.f));
 }
 
 CProjectile::~CProjectile()
@@ -39,6 +41,8 @@ void CProjectile::render(HDC _dc)
 		(int)vPos.y - vScale.y / 2,
 		(int)vPos.x + vScale.x / 2,
 		(int)vPos.y + vScale.y / 2);
+
+	component_render(_dc);
 }
 
 

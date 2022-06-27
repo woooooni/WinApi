@@ -1,3 +1,9 @@
-﻿  CObject.cpp
-  CSceneMgr.cpp
+﻿  CProjectile.cpp
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(10,1): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(28,38): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(29,38): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(43,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(42,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(41,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(40,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   DawnProject.vcxproj -> C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\Output\bin_debug\DawnProject.exe

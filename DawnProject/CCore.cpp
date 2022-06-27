@@ -6,6 +6,7 @@
 #include "CSceneMgr.h"
 #include "CPathMgr.h"
 #include "CCollisionMgr.h"
+#include "CEventMgr.h"
 CCore::CCore() 
 	: m_hWnd(0)
 	, m_ptResolution{}
@@ -69,6 +70,11 @@ void CCore::progress()
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
 
+
+	//===========
+	//Scene Update
+	//===========
+
 	CSceneMgr::GetInst()->update();
 	CCollisionMgr::GetInst()->update();
 
@@ -87,6 +93,11 @@ void CCore::progress()
 
 	CTimeMgr::GetInst()->render();
 
+
+	//===========
+	//Event Update
+	//===========
+	CEventMgr::GetInst()->update();
 }
 
 void CCore::CreateBrushPen()

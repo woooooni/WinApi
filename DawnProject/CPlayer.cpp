@@ -48,13 +48,7 @@ void CPlayer::update()
 
 	if (KEY_TAP(KEY::SPACE))
 	{
-		//TODO
-		CProjectile* projectile = new CProjectile;
-		projectile->SetPos(GetPos());
-		projectile->SetScale(Vec2(20, 20));
-		projectile->SetDir(Vec2(1, 0));
-		CScene* pCurScene = CSceneMgr::GetInst()->GetCurrScene();
-		pCurScene->AddObject(projectile, GROUP_TYPE::PROJECTILE);
+		CreateProjectile();
 	}
 
 	SetPos(_vecPos);
@@ -86,4 +80,20 @@ void CPlayer::render(HDC _dc)
 		(int)_vecPos.x + _vecScale.x / 2,
 		(int)_vecPos.y + _vecScale.y / 2,
 		);*/
+}
+
+void CPlayer::CreateProjectile()
+{
+	CProjectile* projectile = new CProjectile;
+	projectile->SetPos(GetPos());
+	projectile->SetScale(Vec2(20, 20));
+	projectile->SetDir(Vec2(1, 0));
+
+	//#include "func.h"
+	CreateObject(projectile, GROUP_TYPE::PLAYER_PROJECTILE);
+
+
+	//이벤트 매니저가 처리
+	/*CScene* pCurScene = CSceneMgr::GetInst()->GetCurrScene();
+	pCurScene->AddObject(projectile, GROUP_TYPE::PLAYER);*/
 }

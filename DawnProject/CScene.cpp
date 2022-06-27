@@ -29,19 +29,15 @@ const wstring& CScene::GetName()
 	return m_strName;
 }
 
-void CScene::AddObject(CObject* _obj, GROUP_TYPE _type)
-{
-	m_arrObj[(UINT)_type].push_back(_obj);
-}
-
-
-
 void CScene::update()
 {
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) 
 	{
 		for (size_t j = 0; j < m_arrObj[i].size(); ++j) {
-			m_arrObj[i][j]->update();
+			if (!m_arrObj[i][j]->IsDead())
+			{
+				m_arrObj[i][j]->update();
+			}
 		}
 	}
 }
@@ -60,8 +56,18 @@ void CScene::render(HDC _dc)
 {
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i)
 	{
-		for (size_t j = 0; j < m_arrObj[i].size(); ++j) {
-			m_arrObj[i][j]->render(_dc);
+		vector<CObject*>::iterator iter = m_arrObj[i].begin();
+		for (; iter != m_arrObj[i].end();)
+		{
+			if (!(*iter)->IsDead())
+			{
+				(*iter)->render(_dc);
+				++iter;
+			}
+			else
+			{
+				iter = m_arrObj[i].erase(iter);
+			}
 		}
 	}
 }
