@@ -15,9 +15,9 @@ public:
 	const wstring& GetName();
 
 
-	void update();
-	void finalupdate();
-	void render(HDC _dc);
+	virtual void update();
+	virtual void finalupdate();
+	virtual void render(HDC _dc);
 
 
 
@@ -31,10 +31,13 @@ public:
 		m_arrObj[(UINT)_eType].push_back(_obj); 
 	}
 
-	const vector<CObject*>& GetGruopObejct(GROUP_TYPE _eType) 
+	const vector<CObject*>& GetGroupObejct(GROUP_TYPE _eType)
 	{ 
 		return m_arrObj[(UINT)_eType]; 
 	}
+
+	void DeleteGroup(GROUP_TYPE _eTarget);
+	void DeleteAll();
 
 public:
 	CScene();

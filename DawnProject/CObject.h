@@ -44,6 +44,7 @@ public:
 
 public: 
 	CObject();
+	CObject(const CObject& _origin);
 	virtual ~CObject();
 
 	friend class CEventMgr;

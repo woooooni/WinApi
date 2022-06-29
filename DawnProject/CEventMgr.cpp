@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "CEventMgr.h"
 #include "CObject.h"
-#include "CSceneMgr.h";
-#include "CScene.h";
+#include "CSceneMgr.h"
+#include "CScene.h"
 
 CEventMgr::CEventMgr()
 {
@@ -26,6 +26,7 @@ void CEventMgr::update()
 	{
 		Excute(m_vecEvent[i]);
 	}
+
 	m_vecEvent.clear();
 }
 
@@ -54,13 +55,17 @@ void CEventMgr::Excute(const tEvent& _eve)
 		CObject* pDeadObj = (CObject*)_eve.lParam;
 		pDeadObj->SetDead();
 
-		m_vecDead.push_back((CObject*)_eve.lParam);
+		m_vecDead.push_back(pDeadObj);
 
 	}
 		break;
 
 
 	case EVENT_TYPE::SCENE_CHANGE:
+	{
+		// lParam : SCENE_TYPE
+		CSceneMgr::GetInst()->ChangeScene((SCENE_TYPE)_eve.lParam);
+	}
 		break;
 	}
 }

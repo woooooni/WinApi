@@ -12,11 +12,8 @@ public:
     virtual void update();
     virtual void render(HDC _dc);
 
-
 private:
     void CreateProjectile();
-public:
-    //TODO:
 
 public:
     CPlayer();

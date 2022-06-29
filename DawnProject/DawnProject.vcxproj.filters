@@ -77,6 +77,9 @@
     <Filter Include="Engine\03. Manager\EventMgr">
       <UniqueIdentifier>{9fc70802-d651-4683-b58b-35d82768c689}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Monster">
+      <UniqueIdentifier>{ca7fcce8-108e-4ef4-a640-2c940990c602}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DawnProject.h">
@@ -105,9 +108,6 @@
     </ClInclude>
     <ClInclude Include="CTimeMgr.h">
       <Filter>Engine\03. Manager\TimerMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="CScene.h">
-      <Filter>Engine\05. Scene</Filter>
     </ClInclude>
     <ClInclude Include="CSceneMgr.h">
       <Filter>Engine\03. Manager\SceneMgr</Filter>
@@ -157,6 +157,15 @@
     <ClInclude Include="func.h">
       <Filter>Engine\01.Header</Filter>
     </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>Engine\04. Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>Engine\05. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_Tool.h">
+      <Filter>Engine\05. Scene\Scene_Tool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -170,9 +179,6 @@
     </ClCompile>
     <ClCompile Include="CTimeMgr.cpp">
       <Filter>Engine\03. Manager\TimerMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="CScene.cpp">
-      <Filter>Engine\05. Scene</Filter>
     </ClCompile>
     <ClCompile Include="CSceneMgr.cpp">
       <Filter>Engine\03. Manager\SceneMgr</Filter>
@@ -218,6 +224,15 @@
     </ClCompile>
     <ClCompile Include="func.cpp">
       <Filter>Engine\01.Header</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>Engine\04. Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene.cpp">
+      <Filter>Engine\05. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Tool.cpp">
+      <Filter>Engine\05. Scene\Scene_Tool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

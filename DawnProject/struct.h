@@ -11,6 +11,7 @@ public:
 	{
 		return sqrt(x * x + y * y);
 	}
+
 	Vec2& Normalize() 
 	{
 		float fLen = Length();

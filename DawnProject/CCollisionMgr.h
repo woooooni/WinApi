@@ -18,7 +18,8 @@ class CCollisionMgr
 
 private:
 	map<ULONGLONG, bool>		m_mapColInfo;//충돌체 간의 이전 프레임 충돌 정보(두 충돌체간의 고유한 키값이 필요함)
-	UINT					m_arrCheck[(UINT)GROUP_TYPE::END]; // 그룹간의 충돌 체크 matrix
+	UINT						m_arrCheck[(UINT)GROUP_TYPE::END]; // 그룹간의 충돌 체크 matrix
+
 public:
 	void init();
 	void update();

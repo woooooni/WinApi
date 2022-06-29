@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "CCollisionMgr.h"
-#include "CSceneMgr.h";
-#include "CScene.h";
-#include "CObject.h";
-#include "CCollider.h";
+#include "CSceneMgr.h"
+#include "CScene.h"
+#include "CObject.h"
+#include "CCollider.h"
 
 
 CCollisionMgr::CCollisionMgr() 
@@ -17,6 +17,7 @@ CCollisionMgr::~CCollisionMgr()
 
 void CCollisionMgr::init()
 {
+
 }
 
 void CCollisionMgr::update()
@@ -41,8 +42,8 @@ void CCollisionMgr::CollisionUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 {
 	CScene* pCurScene = CSceneMgr::GetInst()->GetCurrScene();
 
-	const vector<CObject*>& vecLeft = pCurScene->GetGruopObejct(_eLeft);
-	const vector<CObject*>& vecRight = pCurScene->GetGruopObejct(_eRight);
+	const vector<CObject*>& vecLeft = pCurScene->GetGroupObejct(_eLeft);
+	const vector<CObject*>& vecRight = pCurScene->GetGroupObejct(_eRight);
 	map<ULONGLONG, bool>::iterator iter;
 
 	for (size_t i = 0; i < vecLeft.size(); i++)
@@ -64,7 +65,7 @@ void CCollisionMgr::CollisionUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 			}
 
 			CCollider* pLeftCol = vecLeft[i]->GetCollider();
-			CCollider* pRightCol = vecRight[i]->GetCollider();
+			CCollider* pRightCol = vecRight[j]->GetCollider();
 
 			// gen map key by using union
 			// 두 Collider 조합 아이디 생성.
@@ -88,8 +89,8 @@ void CCollisionMgr::CollisionUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 				if (iter->second)
 				{
 					//이전 프레임에도 충돌 중이었을 경우.
-					//둘 중 하나가 삭제 예정일 경우.
-					if (vecLeft[i]->IsDead() || vecRight[i]->IsDead())
+					//둘 중 하나가 삭제 예정일 경우. 빠져나간것으로 취급
+					if (vecLeft[i]->IsDead() || vecRight[j]->IsDead())
 					{
 						pLeftCol->OnCollisionExit(pRightCol);
 						pRightCol->OnCollisionExit(pLeftCol);
@@ -97,7 +98,6 @@ void CCollisionMgr::CollisionUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 					}
 					else
 					{
-						
 						pLeftCol->OnCollision(pRightCol);
 						pRightCol->OnCollision(pLeftCol);
 					}
@@ -106,7 +106,7 @@ void CCollisionMgr::CollisionUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 				{
 					//이전 프레임에 충돌 중이지 않았음. => 충돌 트리거 호출.
 					//둘 중 하나가 삭제 예정일 경우, 충돌하지 않은 것으로 취급.
-					if (!vecLeft[i]->IsDead() && !vecRight[i]->IsDead())
+					if (!vecLeft[i]->IsDead() && !vecRight[j]->IsDead())
 					{
 						pLeftCol->OnCollisionEnter(pRightCol);
 						pRightCol->OnCollisionEnter(pLeftCol);

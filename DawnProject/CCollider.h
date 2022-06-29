@@ -6,12 +6,14 @@ class CCollider
 
 private:
 	static UINT g_iNextId;
+
 	CObject*	m_pOwner;		//Collider를 소유하고 있는 오브젝트
 	Vec2		m_vOffsetPos;	//오브젝트로부터의 상대적 위치
 	Vec2		m_vFinalPos;	//오브젝트 마지막 위치
 	Vec2		m_vScale;		//Collider의 크기
 
 	UINT		m_iId;			//Collider 고유 아이디
+	PEN_TYPE	ePenType;
 
 public:
 
@@ -26,6 +28,7 @@ public:
 	Vec2 GetFinalPos() { return m_vFinalPos; }
 
 	CObject* GetObj() { return m_pOwner; }
+
 public:
 	void finalupdate();
 	void render(HDC _dc);

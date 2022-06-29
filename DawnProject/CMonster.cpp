@@ -1,37 +1,46 @@
 #include "pch.h"
 #include "CMonster.h"
-
-<<<<<<< HEAD
-CMonster::CMonster()
-=======
+#include "CResMgr.h"
+#include "CCollider.h"
 
 CMonster::CMonster() 
->>>>>>> 2d11748a2eab7f4333a0aab5d3d8f79b3c8bc5e5
 {
+	//Texture로딩
+	m_pTex = CResMgr::GetInst()->
+		LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
+
+	CreateCollider();
+	GetCollider()->SetScale(Vec2(100.f, 100.f));
 
 }
-
-<<<<<<< HEAD
-CMonster::~CMonster()
-=======
 CMonster::~CMonster() 
->>>>>>> 2d11748a2eab7f4333a0aab5d3d8f79b3c8bc5e5
 {
 
 }
 
 void CMonster::update()
 {
-<<<<<<< HEAD
 
-=======
->>>>>>> 2d11748a2eab7f4333a0aab5d3d8f79b3c8bc5e5
 }
 
 void CMonster::render(HDC _dc)
 {
-<<<<<<< HEAD
+	Vec2 _vecScale = GetScale();
+	Vec2 _vecPos = GetPos();
 
-=======
->>>>>>> 2d11748a2eab7f4333a0aab5d3d8f79b3c8bc5e5
+	//unsigned int시, 음수로 넘어가면 상위비트가 1로 변경되어 매우 큰 값이 세팅됨.
+	int iWidth = (int)m_pTex->Width();
+	int iHeight = (int)m_pTex->Height();
+
+	Vec2 Vec2 = GetPos();
+
+	TransparentBlt(_dc
+		, (int)(_vecPos.x - (float)(iWidth / 2))
+		, (int)(_vecPos.y - (float)(iHeight / 2))
+		, iWidth, iHeight
+		, m_pTex->GetDC()
+		, 0, 0, iWidth, iHeight
+		, RGB(255, 0, 255));
+
+	component_render(_dc);
 }

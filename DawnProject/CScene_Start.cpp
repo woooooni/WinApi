@@ -6,6 +6,9 @@
 #include "CTexture.h"
 #include "CPathMgr.h"
 #include "CCollisionMgr.h"
+#include "CMonster.h"
+#include "CSceneMgr.h"
+#include "CKeyMgr.h"
 
 CScene_Start::CScene_Start()
 {
@@ -17,15 +20,30 @@ CScene_Start::~CScene_Start()
 
 }
 
+void CScene_Start::update()
+{
+	CScene::update();
+	if (KEY_TAP(KEY::ENTER))
+	{
+		ChangeSceneEvt(SCENE_TYPE::TOOL);
+	}
+}
+
 void CScene_Start::Enter()
 {
 	//Object 추가
+	//Player
 	CPlayer* pPlayer = new CPlayer;
 	pPlayer->SetPos(Vec2(640, 384));
 	pPlayer->SetScale(Vec2(100.f, 100.f));
 	AddObject(pPlayer, GROUP_TYPE::PLAYER);
 
-
+	//Monster
+	CMonster* pEnemy = new CMonster;
+	pEnemy->SetPos(Vec2(800, 384));
+	pEnemy->SetScale(Vec2(100.f, 100.f));
+	pEnemy->SetName(L"Monster");
+	AddObject(pEnemy, GROUP_TYPE::MONSTER);
 
 
 	// 충돌지점
@@ -37,6 +55,7 @@ void CScene_Start::Enter()
 
 void CScene_Start::Exit()
 {
+	DeleteAll();
 	CCollisionMgr::GetInst()->Reset();
 }
 

@@ -2,15 +2,18 @@
 #include "CProjectile.h"
 #include "CTimeMgr.h"
 #include "CCollider.h"
+#include "CObject.h"
+#include "func.h"
 
 CProjectile::CProjectile()
 	:m_fTheta(PI / 2.f)
 	,m_vDir(Vec2(1.f, 1.f))
 	,m_fSpeed(600.f)
 {
-	m_vDir.Normalize();
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(10.f, 10.f));
+	GetCollider()->SetScale(Vec2(15.f, 15.f));
+	m_vDir.Normalize();
+	
 }
 
 CProjectile::~CProjectile()
@@ -45,16 +48,21 @@ void CProjectile::render(HDC _dc)
 	component_render(_dc);
 }
 
-
-void CProjectile::SetDir(float _fTheta)
+void CProjectile::OnCollision(CCollider* _pOther)
 {
-	m_fTheta = _fTheta;
 }
 
-void CProjectile::SetDir(Vec2 _vDir)
+void CProjectile::OnCollisionEnter(CCollider* _other)
 {
-	m_vDir = _vDir;
-	m_vDir.Normalize();
+	if (_other->GetObj()->GetName() == L"Monster")
+	{
+		DeleteObj(this);
+	}
+}
+
+void CProjectile::OnCollisionExit(CCollider* _pOther)
+{
+	int a = 0;
 }
 
 

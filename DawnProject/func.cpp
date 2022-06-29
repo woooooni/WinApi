@@ -1,10 +1,9 @@
 #include "pch.h"
-#include "func.h"
 #include "CEventMgr.h"
 
 //프로젝트에서 공동으로 사용할 함수를 정의.
 
-void CreateObject(CObject* _pObj, GROUP_TYPE _eGroup)
+void CreateObj(CObject* _pObj, GROUP_TYPE _eGroup)
 {
 	tEvent evn = {};
 	evn.eEven = EVENT_TYPE::CREATE_OBJECT;
@@ -15,11 +14,20 @@ void CreateObject(CObject* _pObj, GROUP_TYPE _eGroup)
 }
 
 
-void DeleteObject(CObject* _pObj)
+void DeleteObj(CObject* _pObj)
 {
 	tEvent evn = {};
 	evn.eEven = EVENT_TYPE::DELETE_OBJECT;
 	evn.lParam = (DWORD_PTR)_pObj;
+
+	CEventMgr::GetInst()->AddEvent(evn);
+}
+
+void ChangeSceneEvt(SCENE_TYPE _eNext)
+{
+	tEvent evn = {};
+	evn.eEven = EVENT_TYPE::SCENE_CHANGE;
+	evn.lParam = (DWORD_PTR)_eNext;
 
 	CEventMgr::GetInst()->AddEvent(evn);
 }

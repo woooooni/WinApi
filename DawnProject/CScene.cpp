@@ -2,6 +2,7 @@
 #include "CScene.h"
 #include "CObject.h"
 
+
 CScene::CScene()
 {
 }
@@ -69,5 +70,22 @@ void CScene::render(HDC _dc)
 				iter = m_arrObj[i].erase(iter);
 			}
 		}
+	}
+}
+
+
+void CScene::DeleteGroup(GROUP_TYPE _eTarget)
+{
+	//#include "func.h"
+	//Template Func
+	//함수가 아님. => 컴파일러가 요청된 타입에 맞춰 함수를 "생성"해서 호출하는 것임.
+	Safe_Delete_Vec<CObject*>(m_arrObj[(UINT)_eTarget]);
+}
+
+void CScene::DeleteAll()
+{
+	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; i++)
+	{
+		DeleteGroup((GROUP_TYPE)i);
 	}
 }

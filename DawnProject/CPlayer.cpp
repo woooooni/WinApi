@@ -88,9 +88,10 @@ void CPlayer::CreateProjectile()
 	projectile->SetPos(GetPos());
 	projectile->SetScale(Vec2(20, 20));
 	projectile->SetDir(Vec2(1, 0));
+	projectile->SetName(L"PLAYER_PROJECTILE");
 
 	//#include "func.h"
-	CreateObject(projectile, GROUP_TYPE::PLAYER_PROJECTILE);
+	CreateObj(projectile, GROUP_TYPE::PLAYER_PROJECTILE);
 
 
 	//이벤트 매니저가 처리
