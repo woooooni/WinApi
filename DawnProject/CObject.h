@@ -1,5 +1,6 @@
 #pragma once
 class CCollider;
+class CAnimator;
 
 class CObject
 {
@@ -10,6 +11,9 @@ private:
 
 	//Collider(Ãæµ¹) ÄÄÆ÷³ÍÆ®
 	CCollider*	m_pCollider;
+
+	//Animaotr ÄÄÆ÷³ÍÆ®
+	CAnimator* m_pAnimator;
 
 	bool		m_bAlive;
 
@@ -32,15 +36,21 @@ public:
 	virtual void OnCollisionEnter(CCollider* _pOther) {}
 	virtual void OnCollisionExit(CCollider* _pOther) {}
 
+
+	void CreateAnimator();
+	CAnimator* GetAnimator() { return m_pAnimator; }
+
 private:
 	void SetDead() { m_bAlive = false; }
 
 public:
 	virtual void update()=0;
 	virtual void finalupdate() final;
-
 	virtual void render(HDC _dc);
+
 	void component_render(HDC _dc);
+
+	virtual CObject* Clone() = 0;
 
 public: 
 	CObject();

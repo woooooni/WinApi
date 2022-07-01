@@ -9,16 +9,19 @@
 #include "CScene.h"
 #include "CResMgr.h"
 #include "CCollider.h"
+#include "CAnimator.h"
 
 CPlayer::CPlayer()
-	:m_pTex()
 {
-	//Texture로딩
-	m_pTex = CResMgr::GetInst()->
-		LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
-
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(100.f, 100.f));
+
+	//Texture로딩
+	CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\link.bmp");
+
+	CreateAnimator();
+	GetAnimator()->CreateAnimation(L"WALK_DOWN", pTex, Vec2(0.f, 416.f), Vec2(96.f, 104.f), Vec2(96.f, 0.f), .1f, 10);
+	GetAnimator()->Play(L"WALK_DOWN", true);
 }
 
 CPlayer::~CPlayer()
@@ -52,10 +55,16 @@ void CPlayer::update()
 	}
 
 	SetPos(_vecPos);
+	GetAnimator()->update();
 }
 
 void CPlayer::render(HDC _dc)
 {
+
+	
+	/*
+	* 텍스처 "직접"로딩해 사용시 아래 코드 사용.
+	* ===================================================================
 	Vec2 _vecScale = GetScale();
 	Vec2 _vecPos = GetPos();
 
@@ -72,14 +81,11 @@ void CPlayer::render(HDC _dc)
 		, m_pTex->GetDC()
 		, 0, 0, iWidth, iHeight
 		,RGB(255, 0, 255));
+	* ===================================================================
+	*/
 
+	// 컴포넌트(충돌체, etc..)가 있는 경우 렌더
 	component_render(_dc);
-	/*TransparentBlt(_dc,
-		(int)_vecPos.x - _vecScale.x / 2,
-		(int)_vecPos.y - _vecScale.y / 2,
-		(int)_vecPos.x + _vecScale.x / 2,
-		(int)_vecPos.y + _vecScale.y / 2,
-		);*/
 }
 
 void CPlayer::CreateProjectile()

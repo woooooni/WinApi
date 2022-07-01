@@ -33,17 +33,21 @@ void CScene_Start::Enter()
 {
 	//Object 추가
 	//Player
-	CPlayer* pPlayer = new CPlayer;
+	CObject* pPlayer = new CPlayer;
 	pPlayer->SetPos(Vec2(640, 384));
 	pPlayer->SetScale(Vec2(100.f, 100.f));
 	AddObject(pPlayer, GROUP_TYPE::PLAYER);
 
-	//Monster
-	CMonster* pEnemy = new CMonster;
-	pEnemy->SetPos(Vec2(800, 384));
-	pEnemy->SetScale(Vec2(100.f, 100.f));
-	pEnemy->SetName(L"Monster");
-	AddObject(pEnemy, GROUP_TYPE::MONSTER);
+	//CObject* pOtherPlayer = pPlayer->Clone();
+	//pOtherPlayer->SetPos(Vec2(640, 484));
+	//AddObject(pOtherPlayer, GROUP_TYPE::PLAYER);
+
+	////Monster
+	//CMonster* pEnemy = new CMonster;
+	//pEnemy->SetPos(Vec2(800, 384));
+	//pEnemy->SetScale(Vec2(100.f, 100.f));
+	//pEnemy->SetName(L"Monster");
+	//AddObject(pEnemy, GROUP_TYPE::MONSTER);
 
 
 	// 충돌지점
