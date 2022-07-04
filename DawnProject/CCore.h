@@ -8,6 +8,7 @@ public:
 private:
 	HWND	m_hWnd = NULL;			// 메인 윈도우 핸들
 	POINT	m_ptResolution = {};	// 메인 윈도우 해상도
+	Vec2	m_ptResolutionVec = {};
 	HDC		m_hDC;					// 메인 윈도우에 Draw할 DC
 
 	HBITMAP	m_hBit;
@@ -28,6 +29,7 @@ public:
 	HWND GetMainHwnd() { return m_hWnd; }
 	HDC GetMainDc() { return m_hDC; };
 	POINT GetResoultion() { return m_ptResolution; }
+	Vec2 GetResoultionVec() { return m_ptResolutionVec; }
 	HBRUSH GetBrush(BRUSH_TYPE _eType) { return m_arrBrush[(UINT)_eType]; }
 	HPEN GetPen(PEN_TYPE _eType) { return m_arrPen[(UINT)_eType]; };
 };

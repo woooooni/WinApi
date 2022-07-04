@@ -25,6 +25,6 @@ public:
 
 public:
 	double GetDT() { return m_dDT; }
-	double GetfDT() { return (float)m_dDT; }
+	float GetfDT() { return (float)m_dDT; }
 };
 

@@ -7,6 +7,9 @@
 #include "CPathMgr.h"
 #include "CCollisionMgr.h"
 #include "CEventMgr.h"
+#include "CCamera.h"
+
+
 CCore::CCore() 
 	: m_hWnd(0)
 	, m_ptResolution{}
@@ -34,6 +37,7 @@ int CCore::Init(HWND _hWnd, POINT _ptResolution)
 {
 	m_hWnd = _hWnd;
 	m_ptResolution = _ptResolution;
+	m_ptResolutionVec = Vec2((float)_ptResolution.x, (float)_ptResolution.y);
 	
 	//해상도에 맞게 윈도우 크기를 조절.
 	RECT rt = {0, 0, _ptResolution.x, _ptResolution.y};
@@ -69,6 +73,8 @@ void CCore::progress()
 	//Manager Update
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
+	CCamera::GetInst()->update();
+
 
 
 	//===========

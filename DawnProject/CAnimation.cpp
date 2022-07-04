@@ -4,12 +4,14 @@
 #include "CAnimator.h"
 #include "CObject.h"
 #include "CTimeMgr.h"
+#include "CCamera.h"
 
 CAnimation::CAnimation()
 	:m_pAnimator(nullptr)
 	, m_pTex(nullptr)
 	, m_iCurFrm(0)
 	, m_bFinish(false)
+	, m_fAccTime(0)
 
 {
 
@@ -32,10 +34,12 @@ void CAnimation::update()
 	if (m_vecFrame[m_iCurFrm].fDuration < m_fAccTime)
 	{
 		++m_iCurFrm;
+
 		if (m_vecFrame.size() <= m_iCurFrm)
 		{
 			m_iCurFrm = -1;
 			m_bFinish = true;
+			m_fAccTime = 0;
 			return;
 		}
 
@@ -55,7 +59,13 @@ void CAnimation::render(HDC _dc)
 	
 	//TODO::공부
 	//TransparentBlt()의 Destination x,y 위치는 (플레이어의 현재 포지션 - 슬라이스 사이즈 절반만큼 움직인 사이즈)임.
-	
+
+	//Object Position에 Offset만큼 이동.
+	vPos += m_vecFrame[m_iCurFrm].vOffset;
+
+	//카메라의 위치에 따른 렌더링 좌표로 전환.
+	vPos = CCamera::GetInst()->GetRenderPos(vPos);
+
 	TransparentBlt(_dc
 		, (int)(vPos.x - m_vecFrame[m_iCurFrm].vSlice.x / 2.f)
 		, (int)(vPos.y - m_vecFrame[m_iCurFrm].vSlice.y / 2.f)
@@ -80,7 +90,7 @@ void CAnimation::Create(CTexture* _pTex,
 	{
 		frm.fDuration = _fDuration;
 		frm.vSlice = _vSliceSize;
-		frm.vLT = _vLT + _vStep * i;
+		frm.vLT = _vLT + _vStep * (float)i;
 
 		m_vecFrame.push_back(frm);
 	}
