@@ -25,10 +25,12 @@
 #define MOUSE_POS CKeyMgr::CKeyMgr::GetInst()->GetMousePos()
 
 #define PI 3.1415926535
+#define TILE_SIZE 64	//2의 승수로 쓰면 최적화에 유리.
 
 enum class GROUP_TYPE 
 {
 	DEFAULT,
+	TILE,
 	PLAYER,
 	MONSTER,
 	PLAYER_PROJECTILE,
