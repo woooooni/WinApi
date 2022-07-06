@@ -15,6 +15,11 @@ public:
 	{
 		m_pTileTexture = _pTex;
 	}
+
+	void AddImgIdx()
+	{
+		++m_iIdx;
+	}
 public:
 	virtual void render(HDC _dc);
 	virtual void update();

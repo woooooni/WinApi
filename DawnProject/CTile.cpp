@@ -2,7 +2,7 @@
 
 CTile::CTile()
 	:m_pTileTexture(nullptr)
-	, m_iIdx(3)
+	, m_iIdx(0)
 {
 	SetScale(Vec2(TILE_SIZE, TILE_SIZE));
 }
@@ -36,8 +36,6 @@ void CTile::render(HDC _dc)
 	if (iMaxRow <= iCurRow)
 		assert(nullptr);
 
-	
-
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(GetPos());
 	Vec2 vScale = GetScale();
 	
@@ -48,8 +46,8 @@ void CTile::render(HDC _dc)
 		, (int)(vScale.x)
 		, (int)(vScale.y)
 		, m_pTileTexture->GetDC()
-		, iCurRow * TILE_SIZE
 		, iCurCol * TILE_SIZE
+		, iCurRow * TILE_SIZE
 		, SRCCOPY);
 }
 
