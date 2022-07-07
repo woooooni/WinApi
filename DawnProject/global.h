@@ -7,6 +7,9 @@
 #include<vector>
 using std::vector;
 
+#include <list>
+using std::list;
+
 #include<map>
 using std::map;
 using std::make_pair;

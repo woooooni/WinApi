@@ -8,6 +8,7 @@
 #include "CCollisionMgr.h"
 #include "CEventMgr.h"
 #include "CCamera.h"
+#include "CUIMgr.h"
 
 
 CCore::CCore() 
@@ -80,9 +81,13 @@ void CCore::progress()
 	//===========
 	//Scene Update
 	//===========
-
 	CSceneMgr::GetInst()->update();
+
+	//충돌체크
 	CCollisionMgr::GetInst()->update();
+
+	//UI 이벤트 체크
+	CUIMgr::GetInst()->update();
 
 
 	//===========
