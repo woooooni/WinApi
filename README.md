@@ -1,2 +1,2 @@
-# WinApi
-WinApi로 게임 만들기
+# Win Api
+Window 기반 게임 개발 기본구조(Framwork)
