@@ -4,7 +4,7 @@
 
 
 CTexture::CTexture()
-	:m_dc(0)
+	: m_dc(0)
 	, m_hBit(0)
 	, m_bitInfo{}
 {
@@ -29,6 +29,20 @@ void CTexture::Load(const wstring& _strFilePath)
 	// 비트맵과 DC 연결
 	HBITMAP hPrevBit =(HBITMAP)SelectObject(m_dc, m_hBit);
 	DeleteObject(hPrevBit);
+
+	// 비트맵 정보
+	GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);
+}
+
+void CTexture::Create(UINT _iWidth, UINT _iHeight)
+{
+	HDC mainDC = CCore::GetInst()->GetMainDc();
+
+	m_hBit = CreateCompatibleBitmap(mainDC, (int)_iWidth, (int)_iHeight);
+	m_dc = CreateCompatibleDC(mainDC);
+
+	HBITMAP hOldBit = (HBITMAP)SelectObject(m_dc, m_hBit);
+	DeleteObject(hOldBit);
 
 	// 비트맵 정보
 	GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);

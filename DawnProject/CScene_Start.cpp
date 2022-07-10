@@ -65,7 +65,10 @@ void CScene_Start::Enter()
 	//CameraLook 지정
 	Vec2 vResolution = CCore::GetInst()->GetResoultionVec();
 	CCamera::GetInst()->SetLookAt(vResolution / 2.f);
-	//CCamera::GetInst()->SetTarget(pPlayer);
+
+	//Camera효과 지정
+	CCamera::GetInst()->FadeOut(1.f);
+	CCamera::GetInst()->FadeIn(1.f);
 }
 
 void CScene_Start::Exit()

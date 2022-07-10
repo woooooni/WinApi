@@ -92,9 +92,28 @@ void CPlayer::render(HDC _dc)
 		,RGB(255, 0, 255));
 	* ===================================================================
 	*/
+	CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"Mushroom", L"texture\\Player_A.bmp");
 
+	Vec2 vPos = GetPos();
+	vPos = CCamera::GetInst()->GetRenderPos(vPos);
+	float width = pTex->Width();
+	float height = pTex->Height();
+
+	BLENDFUNCTION bf = {};
+	bf.BlendOp = AC_SRC_OVER;
+	bf.BlendFlags = 0;
+	bf.AlphaFormat = AC_SRC_ALPHA;
+	bf.SourceConstantAlpha = 127;
+	AlphaBlend(_dc
+		, int(vPos.x - width / 2.f)
+		, int(vPos.y - height / 2.f)
+		, (int)width, (int)height
+		, pTex->GetDC()
+		, 0, 0
+		, (int)width, (int)height
+		, bf);
 	// 컴포넌트(충돌체, etc..)가 있는 경우 렌더
-	component_render(_dc);
+	//component_render(_dc);
 }
 
 void CPlayer::CreateProjectile()

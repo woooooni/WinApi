@@ -14,8 +14,10 @@ void Safe_Delete_Vec(vector<T>& _vec)
 {
 	for (size_t i = 0; i < _vec.size(); ++i)
 	{
-		if (_vec[i])
+		if (nullptr != _vec[i])
+		{
 			delete _vec[i];
+		}
 	}
 	_vec.clear();
 }
@@ -31,4 +33,14 @@ void Safe_Delete_Map(map<T1, T2>& _map)
 			delete iter->second;
 	}
 	_map.clear();
+}
+
+template<typename T1>
+T1 clamp(T1 src, T1 min, T1 max)
+{
+	if (src > max)
+		return max;
+	if (src < min)
+		return min;
+	return src;
 }

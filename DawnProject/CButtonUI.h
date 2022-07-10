@@ -17,8 +17,10 @@ private:
     DWORD_PTR   m_param1;
     DWORD_PTR   m_param2;
 
+    CScene* m_pSceneInst;
     SCENE_MEMFUNC   m_pSceneFunc;
-    CScene*    m_pSceneInst;
+    
+
 public:
     virtual void MouseOn();
     virtual void MouseLBtnDown();

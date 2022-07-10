@@ -11,7 +11,6 @@
 							type();\
 							~type();
 
-
 #define DeltaTimef CTimeMgr::GetInst()->GetfDT()
 #define DeltaTime CTimeMgr::GetInst()->GetDT()
 
@@ -31,8 +30,8 @@ enum class GROUP_TYPE
 {
 	DEFAULT,
 	TILE,
-	PLAYER,
 	MONSTER,
+	PLAYER,
 	PLAYER_PROJECTILE,
 	MONSTER_PROJECTILE,
 	UI = 31,
