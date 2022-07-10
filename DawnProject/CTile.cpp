@@ -18,6 +18,7 @@ void CTile::update()
 
 }
 
+
 void CTile::render(HDC _dc)
 {
 	if (m_pTileTexture == nullptr || m_iIdx == -1)
@@ -50,4 +51,16 @@ void CTile::render(HDC _dc)
 		, iCurRow * TILE_SIZE
 		, SRCCOPY);
 }
+
+void CTile::Save(FILE* _pFile)
+{
+	fwrite(&m_iIdx, sizeof(int), 1, _pFile);
+}
+
+void CTile::Load(FILE* _pFile)
+{
+	fread(&m_iIdx, sizeof(int), 1, _pFile);
+}
+
+
 

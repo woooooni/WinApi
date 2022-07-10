@@ -7,6 +7,11 @@ struct Vec2
 
 
 public:
+	bool IsZero()
+	{
+		return ((x == 0.f) && (y == 0.f));
+	}
+
 	float Length() 
 	{
 		return sqrt(x * x + y * y);

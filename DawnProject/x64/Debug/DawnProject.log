@@ -1,4 +1,4 @@
-﻿  unity_0L53UK2QR6O9K1X6.cpp
+﻿  unity_RB1221DKKUNQ3TTA.cpp
 C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(12,1): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
 C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(46,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(45,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.

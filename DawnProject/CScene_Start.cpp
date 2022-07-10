@@ -24,7 +24,10 @@ CScene_Start::~CScene_Start()
 void CScene_Start::update()
 {
 	CScene::update();
-
+	if (KEY_TAP(KEY::ENTER))
+	{
+		ChangeSceneEvt(SCENE_TYPE::TOOL);
+	}
 	//if (KEY_TAP(KEY::LBTN))
 	//{
 	//	Vec2 vLookAt = CCamera::GetInst()->GetRealPos(MOUSE_POS);

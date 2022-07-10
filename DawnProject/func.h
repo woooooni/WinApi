@@ -12,12 +12,10 @@ void ChangeSceneEvt(SCENE_TYPE _eNext);
 template<typename T>
 void Safe_Delete_Vec(vector<T>& _vec)
 {
-	for (size_t i = 0; i < _vec.size(); i++)
+	for (size_t i = 0; i < _vec.size(); ++i)
 	{
-		if (nullptr != _vec[i])
-		{
+		if (_vec[i])
 			delete _vec[i];
-		}
 	}
 	_vec.clear();
 }

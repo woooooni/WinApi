@@ -1,5 +1,7 @@
 #pragma once
+#include "pch.h"
 #include "CObject.h"
+
 class CUI :
     public CObject
 {
@@ -18,6 +20,9 @@ public:
 
     CUI* GetParent() { return m_pParentUI; }
     bool IsMouseOn() { return m_bMouseOn; }
+    bool IsLBtnDown() { return m_bLbtnDown; }
+
+
     void AddChild(CUI* _pUI) { m_vecChildUI.push_back(_pUI); _pUI->m_pParentUI = this; }
     const vector<CUI*>& GetChildrenUI() { return m_vecChildUI; }
 
@@ -36,12 +41,13 @@ public:
     virtual void MouseRBtnUP();
     virtual void MouseRBtnClicked();
 
+    virtual CUI* Clone() = 0;
+
 public:
     virtual void update();
     virtual void finalupdate();
     virtual void render(HDC _dc);
 
-    CLONE(CUI);
 private:
     void update_child();
     void finalupdate_child();
@@ -49,6 +55,7 @@ private:
 
 public:
     CUI(bool _bCamAff);
+    CUI(const CUI& _origin);
     virtual ~CUI();
 
     friend class CUIMgr;

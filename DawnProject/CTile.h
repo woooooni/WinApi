@@ -20,6 +20,9 @@ public:
 	{
 		++m_iIdx;
 	}
+	virtual void Load(FILE* _pFile);
+	virtual void Save(FILE* _pFile);
+
 public:
 	virtual void render(HDC _dc);
 	virtual void update();

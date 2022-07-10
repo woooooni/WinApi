@@ -3,6 +3,8 @@
 #include "CObject.h"
 #include "CTile.h"
 #include "CResMgr.h"
+#include "CPathMgr.h"
+
 CScene::CScene()
 	: m_iTileX(0)
 	, m_iTileY(0)
@@ -94,6 +96,8 @@ void CScene::DeleteAll()
 
 void CScene::CreateTile(UINT _iXCount, UINT _iYCount)
 {
+	DeleteGroup(GROUP_TYPE::TILE);
+
 	CTexture* pTileTexture = CResMgr::GetInst()->LoadTexture(L"TileSet", L"texture\\tile\\tileset.bmp");
 	m_iTileX = _iXCount;
 	m_iTileY = _iYCount;
@@ -112,3 +116,31 @@ void CScene::CreateTile(UINT _iXCount, UINT _iYCount)
 		}
 	}
 }
+
+void CScene::LoadTile(const wstring& _strRelativePath)
+{
+	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
+	strFilePath += _strRelativePath;
+
+	//  커널 오브젝트 FILE -> 프로그램과 하드디스크 사이 연결(Stream)을 잡아주는 역할.
+	FILE* pFile = nullptr;
+
+	_wfopen_s(&pFile, strFilePath.c_str(), L"rb");
+	assert(pFile);
+	UINT xCount = 0;
+	UINT yCount = 0;
+
+	fread(&xCount, sizeof(UINT), 1, pFile);
+	fread(&yCount, sizeof(UINT), 1, pFile);
+
+	CreateTile(xCount, yCount);
+
+	const vector<CObject*>& vecTile = GetGroupObejct(GROUP_TYPE::TILE);
+	for (size_t i = 0; i < vecTile.size(); i++)
+	{
+		((CTile*)vecTile[i])->Load(pFile);
+	}
+
+	fclose(pFile);
+}
+

@@ -3,6 +3,7 @@
 #include "CObject.h"
 #include "CSceneMgr.h"
 #include "CScene.h"
+#include "CUIMgr.h"
 
 CEventMgr::CEventMgr()
 {
@@ -18,7 +19,8 @@ void CEventMgr::update()
 {
 	for (size_t i = 0; i < m_vecDead.size(); i++)
 	{
-		delete m_vecDead[i];
+		if(nullptr != m_vecDead[i])
+			delete m_vecDead[i];
 	}
 	m_vecDead.clear();
 
@@ -26,7 +28,6 @@ void CEventMgr::update()
 	{
 		Excute(m_vecEvent[i]);
 	}
-
 	m_vecEvent.clear();
 }
 
@@ -64,7 +65,11 @@ void CEventMgr::Excute(const tEvent& _eve)
 	case EVENT_TYPE::SCENE_CHANGE:
 	{
 		// lParam : SCENE_TYPE
+
+		//1. Scene 변경.
 		CSceneMgr::GetInst()->ChangeScene((SCENE_TYPE)_eve.lParam);
+		//2. 포커스 UI 해제.
+		CUIMgr::GetInst()->SetFocusedUI(nullptr);
 	}
 		break;
 	}
