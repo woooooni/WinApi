@@ -18,16 +18,26 @@ private:
 	HBRUSH	m_arrBrush[(UINT)BRUSH_TYPE::END];
 	HPEN	m_arrPen[(UINT)PEN_TYPE::END];
 
+	//¸Þ´º
+	HMENU	m_hMenu;
+
 public:
 	int Init(HWND _hWnd, POINT _ptResolution);
 	void progress();
 
 private:
+	void Clear();
 	void CreateBrushPen();
+
+public:
+	void DockMenu();
+	void DivideMenu();
+	void ChangeWindowSize(Vec2 _vResolution, bool _bMenu);
 
 public:
 	HWND GetMainHwnd() { return m_hWnd; }
 	HDC GetMainDc() { return m_hDC; };
+
 	POINT GetResoultion() { return m_ptResolution; }
 	Vec2 GetResoultionVec() { return m_ptResolutionVec; }
 	HBRUSH GetBrush(BRUSH_TYPE _eType) { return m_arrBrush[(UINT)_eType]; }

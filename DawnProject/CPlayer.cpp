@@ -17,6 +17,8 @@ CPlayer::CPlayer()
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(100.f, 100.f));
 
+
+	//Animator
 	//Texture로딩
 	CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\link.bmp");
 
@@ -26,10 +28,10 @@ CPlayer::CPlayer()
 
 	CAnimation* pAnim = GetAnimator()->FindAnimation(L"WALK_DOWN");
 
-	//for (int i = 0; i < pAnim->GetMaxFrame(); i++)
-	//{
-	//	pAnim->GetFrame(i).vOffset = Vec2(0.f, -100.f);
-	//}
+	for (int i = 0; i < pAnim->GetMaxFrame(); i++)
+	{
+		pAnim->GetFrame(i).vOffset = Vec2(0.f, 0.f);
+	}
 	
 }
 
@@ -40,7 +42,7 @@ CPlayer::~CPlayer()
 
 void CPlayer::update()
 {
-	/*Vec2 _vecPos = GetPos();
+	Vec2 _vecPos = GetPos();
 	if (KEY_HOLD(KEY::UP))
 	{
 		_vecPos.y -= 200.f * DeltaTimef;
@@ -56,14 +58,14 @@ void CPlayer::update()
 	if (KEY_HOLD(KEY::RIGHT))
 	{
 		_vecPos.x += 200.f * DeltaTimef;
-	}*/
+	}
 
 	if (KEY_TAP(KEY::SPACE))
 	{
 		CreateProjectile();
 	}
 
-	/*SetPos(_vecPos);*/
+	SetPos(_vecPos);
 	GetAnimator()->update();
 }
 
@@ -92,28 +94,31 @@ void CPlayer::render(HDC _dc)
 		,RGB(255, 0, 255));
 	* ===================================================================
 	*/
-	CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"Mushroom", L"texture\\Player_A.bmp");
+	/* ===================================================================
+	//CTexture* pTex = CResMgr::GetInst()->LoadTexture(L"Mushroom", L"texture\\Player_A.bmp");
 
-	Vec2 vPos = GetPos();
-	vPos = CCamera::GetInst()->GetRenderPos(vPos);
-	float width = pTex->Width();
-	float height = pTex->Height();
+	//Vec2 vPos = GetPos();
+	//vPos = CCamera::GetInst()->GetRenderPos(vPos);
+	//float width = pTex->Width();
+	//float height = pTex->Height();
 
-	BLENDFUNCTION bf = {};
-	bf.BlendOp = AC_SRC_OVER;
-	bf.BlendFlags = 0;
-	bf.AlphaFormat = AC_SRC_ALPHA;
-	bf.SourceConstantAlpha = 127;
-	AlphaBlend(_dc
-		, int(vPos.x - width / 2.f)
-		, int(vPos.y - height / 2.f)
-		, (int)width, (int)height
-		, pTex->GetDC()
-		, 0, 0
-		, (int)width, (int)height
-		, bf);
+	//BLENDFUNCTION bf = {};
+	//bf.BlendOp = AC_SRC_OVER;
+	//bf.BlendFlags = 0;
+	//bf.AlphaFormat = AC_SRC_ALPHA;
+	//bf.SourceConstantAlpha = 127;
+	//AlphaBlend(_dc
+	//	, int(vPos.x - width / 2.f)
+	//	, int(vPos.y - height / 2.f)
+	//	, (int)width, (int)height
+	//	, pTex->GetDC()
+	//	, 0, 0
+	//	, (int)width, (int)height
+	//	, bf);
+	*/
+
 	// 컴포넌트(충돌체, etc..)가 있는 경우 렌더
-	//component_render(_dc);
+	component_render(_dc);
 }
 
 void CPlayer::CreateProjectile()

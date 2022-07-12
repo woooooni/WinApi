@@ -1,5 +1,7 @@
 #pragma once
 class AI;
+class CMonster;
+
 class CState
 {
 private:
@@ -8,6 +10,8 @@ private:
 public:
 	AI* GetAI() { return m_pAI; }
 	MONSTER_STATE GetType() { return m_eState; }
+	CMonster* GetMonster();
+
 public:
 	virtual void update() = 0;
 	virtual void Enter() = 0;

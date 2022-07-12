@@ -3,6 +3,7 @@
 #include "CObject.h"
 #include "CSceneMgr.h"
 #include "CScene.h"
+#include "AI.h"
 #include "CUIMgr.h"
 
 CEventMgr::CEventMgr()
@@ -70,6 +71,16 @@ void CEventMgr::Excute(const tEvent& _eve)
 		CSceneMgr::GetInst()->ChangeScene((SCENE_TYPE)_eve.lParam);
 		//2. 포커스 UI 해제.
 		CUIMgr::GetInst()->SetFocusedUI(nullptr);
+	}
+		break;
+
+	case EVENT_TYPE::CHANGE_AI_STATE:
+	{
+		// lParam : AI*
+		// wParam : STATE
+		AI* _pAI = (AI*)_eve.lParam;
+		MONSTER_STATE eNext = (MONSTER_STATE)_eve.wParam;
+		_pAI->ChangeState(eNext);
 	}
 		break;
 	}

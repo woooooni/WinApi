@@ -125,6 +125,12 @@
     <Filter Include="Engine\08. Module\AI\State\Trace">
       <UniqueIdentifier>{0333ccd4-ede4-490d-bc56-3a83e0f71a76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\09. Factory">
+      <UniqueIdentifier>{56166acc-e44d-49f9-af5f-7c6cedee2d4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09. Factory\Monster Factory">
+      <UniqueIdentifier>{b6fd8418-e0fe-4bfd-9b07-016a3ec6ac51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DawnProject.h">
@@ -187,9 +193,6 @@
     <ClInclude Include="CResMgr.h">
       <Filter>Engine\03. Manager\ResourceMgr</Filter>
     </ClInclude>
-    <ClInclude Include="SelectGDI.h">
-      <Filter>Engine\08. Module</Filter>
-    </ClInclude>
     <ClInclude Include="CCollisionMgr.h">
       <Filter>Engine\03. Manager\CollisionMgr</Filter>
     </ClInclude>
@@ -250,6 +253,12 @@
     <ClInclude Include="CTraceState.h">
       <Filter>Engine\08. Module\AI\State\Trace</Filter>
     </ClInclude>
+    <ClInclude Include="SelectGDI.h">
+      <Filter>Engine\08. Module</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonsterFactory.h">
+      <Filter>Engine\09. Factory\Monster Factory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -293,9 +302,6 @@
     </ClCompile>
     <ClCompile Include="CResMgr.cpp">
       <Filter>Engine\03. Manager\ResourceMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectGDI.cpp">
-      <Filter>Engine\08. Module</Filter>
     </ClCompile>
     <ClCompile Include="CCollisionMgr.cpp">
       <Filter>Engine\03. Manager\CollisionMgr</Filter>
@@ -353,6 +359,12 @@
     </ClCompile>
     <ClCompile Include="CTraceState.cpp">
       <Filter>Engine\08. Module\AI\State\Trace</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectGDI.cpp">
+      <Filter>Engine\08. Module</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterFactory.cpp">
+      <Filter>Engine\09. Factory\Monster Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

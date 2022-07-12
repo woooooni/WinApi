@@ -40,14 +40,14 @@ void CCamera::update()
 			m_vLookAt = m_pTargetObj->GetPos();
 	}
 
-	if (KEY_HOLD(KEY::UP))
-		m_vLookAt.y -= 500.f * DeltaTimef;
-	if (KEY_HOLD(KEY::DOWN))
-		m_vLookAt.y += 500.f * DeltaTimef;
-	if (KEY_HOLD(KEY::LEFT))
-		m_vLookAt.x -= 500.f * DeltaTimef;
-	if (KEY_HOLD(KEY::RIGHT))
-		m_vLookAt.x += 500.f * DeltaTimef;
+	//if (KEY_HOLD(KEY::UP))
+	//	m_vLookAt.y -= 500.f * DeltaTimef;
+	//if (KEY_HOLD(KEY::DOWN))
+	//	m_vLookAt.y += 500.f * DeltaTimef;
+	//if (KEY_HOLD(KEY::LEFT))
+	//	m_vLookAt.x -= 500.f * DeltaTimef;
+	//if (KEY_HOLD(KEY::RIGHT))
+	//	m_vLookAt.x += 500.f * DeltaTimef;
 		
 	CalDiff();
 }

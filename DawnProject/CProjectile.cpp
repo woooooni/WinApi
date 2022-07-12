@@ -63,7 +63,7 @@ void CProjectile::OnCollisionEnter(CCollider* _other)
 
 void CProjectile::OnCollisionExit(CCollider* _pOther)
 {
-	int a = 0;
+  	int a = 0;
 }
 
 

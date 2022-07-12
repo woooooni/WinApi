@@ -6,11 +6,12 @@
 #include "CObject.h"
 #include "CMonster.h"
 
-CMonster::CMonster() 
+CMonster::CMonster()
+	:m_tInfo{}
 {
 	//Texture·Îµù
 	m_pTex = CResMgr::GetInst()->
-		LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
+		LoadTexture(L"Monster", L"texture\\Player.bmp");
 
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(100.f, 100.f));
@@ -36,7 +37,7 @@ void CMonster::render(HDC _dc)
 	int iWidth = (int)m_pTex->Width();
 	int iHeight = (int)m_pTex->Height();
 
-	Vec2 Vec2 = GetPos();
+	_vecPos = CCamera::GetInst()->GetRenderPos(_vecPos);
 
 	TransparentBlt(_dc
 		, (int)(_vecPos.x - (float)(iWidth / 2))

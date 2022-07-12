@@ -12,6 +12,8 @@ private:
 	UINT				m_iTileX;	//타일 가로개수
 	UINT				m_iTileY;	//타일 세로개수
 
+	CObject*			m_pPlayer;
+
 public:
 	void SetName(const wstring& _strName);
 	const wstring& GetName();
@@ -32,15 +34,12 @@ public:
 
 
 public:
-	void AddObject(CObject* _obj, GROUP_TYPE _eType) 
-	{ 
-		m_arrObj[(UINT)_eType].push_back(_obj); 
-	}
+	void AddObject(CObject* _obj, GROUP_TYPE _eType) { m_arrObj[(UINT)_eType].push_back(_obj); }
+	
+	void RegisterPlayer(CObject* _pPlayer) { m_pPlayer = _pPlayer; }
+	CObject* GetPlayer() { return m_pPlayer; }
 
-	const vector<CObject*>& GetGroupObejct(GROUP_TYPE _eType)
-	{ 
-		return m_arrObj[(UINT)_eType]; 
-	}
+	const vector<CObject*>& GetGroupObejct(GROUP_TYPE _eType){ return m_arrObj[(UINT)_eType]; }
 
 	void DeleteGroup(GROUP_TYPE _eTarget);
 	void DeleteAll();

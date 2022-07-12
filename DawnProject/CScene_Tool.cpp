@@ -27,6 +27,9 @@ CScene_Tool::~CScene_Tool()
 
 void CScene_Tool::Enter()
 {
+	//툴 Scene에서 사용할 메뉴를 붙여줌.
+	CCore::GetInst()->DockMenu();
+
 	//타일생성
 	CreateTile(5, 5);
 
@@ -60,6 +63,7 @@ void CScene_Tool::Enter()
 
 void CScene_Tool::Exit()
 {
+	CCore::GetInst()->DivideMenu();
 	DeleteAll();
 }
 

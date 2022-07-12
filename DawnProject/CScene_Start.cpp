@@ -14,6 +14,7 @@
 #include "CState.h"
 #include "CIdleState.h"
 #include "CTraceState.h"
+#include "CMonsterFactory.h"
 
 CScene_Start::CScene_Start()
 {
@@ -47,20 +48,11 @@ void CScene_Start::Enter()
 	pPlayer->SetPos(Vec2(640, 384));
 	pPlayer->SetScale(Vec2(100.f, 100.f));
 	AddObject(pPlayer, GROUP_TYPE::PLAYER);
+	RegisterPlayer(pPlayer);
 
-	//TODO::반복될 일이 많으므로, 전역함수로 따로 만들기
-	AI* pAI = new AI;
-	pAI->AddState(new CIdleState);
-	pAI->AddState(new CTraceState);
-
-	//Monster
-	CMonster* pEnemy = new CMonster;
-	pEnemy->SetPos(Vec2(800, 384));
-	pEnemy->SetScale(Vec2(100.f, 100.f));
-	pEnemy->SetName(L"Monster");
-
-	pEnemy->SetAI(pAI);
-	AddObject(pEnemy, GROUP_TYPE::MONSTER);
+	//TODO::반복될 일이 많으므로, 전역함수로 따로 만들기(CMonsterFactory)
+	CMonster* pMon = CMonsterFactory::CreateMonster(MONSTER_TYPE::NORMAL, Vec2(940, 384));
+	AddObject(pMon, GROUP_TYPE::MONSTER);
 
 
 	// 충돌지점
