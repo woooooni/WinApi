@@ -15,6 +15,7 @@ private:
     bool            m_bLbtnDown;    //  왼쪽 버튼이 눌린적 있는지 여부.
     bool            m_bRbtnDown;    //  오른쪽 버튼이 눌린적 있는지 여부.
 
+    wstring         m_strText;      //UI 텍스트
 public:
     Vec2 GetFinalPos() { return m_vFinalPos; }
 
@@ -26,6 +27,15 @@ public:
     void AddChild(CUI* _pUI) { m_vecChildUI.push_back(_pUI); _pUI->m_pParentUI = this; }
     const vector<CUI*>& GetChildrenUI() { return m_vecChildUI; }
 
+    void SetText(const wstring& _strText)
+    {
+        m_strText = _strText;
+    }
+
+    const wstring& GetText()
+    {
+        return m_strText;
+    }
 private:
     void MouseOnCheck();
 

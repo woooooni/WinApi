@@ -40,7 +40,7 @@ CPlayer::~CPlayer()
 
 void CPlayer::update()
 {
-	Vec2 _vecPos = GetPos();
+	/*Vec2 _vecPos = GetPos();
 	if (KEY_HOLD(KEY::UP))
 	{
 		_vecPos.y -= 200.f * DeltaTimef;
@@ -56,14 +56,14 @@ void CPlayer::update()
 	if (KEY_HOLD(KEY::RIGHT))
 	{
 		_vecPos.x += 200.f * DeltaTimef;
-	}
+	}*/
 
 	if (KEY_TAP(KEY::SPACE))
 	{
 		CreateProjectile();
 	}
 
-	SetPos(_vecPos);
+	/*SetPos(_vecPos);*/
 	GetAnimator()->update();
 }
 

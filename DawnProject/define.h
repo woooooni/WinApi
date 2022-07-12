@@ -72,3 +72,23 @@ enum class EVENT_TYPE
 
 	END,
 };
+enum class PLAYER_STATE
+{
+	IDLE,
+	MOVE,
+	TRACE,
+	ATTACK,
+	DEAD,
+	END,
+};
+
+enum class MONSTER_STATE
+{
+	IDLE,
+	PATROL,
+	TRACE,
+	ATTACK,
+	RUN_AWAY,
+	DEAD,
+	END,
+};

@@ -4,6 +4,8 @@
 #include "CTile.h"
 #include "CResMgr.h"
 #include "CPathMgr.h"
+#include "CCamera.h"
+#include "CCore.h"
 
 CScene::CScene()
 	: m_iTileX(0)
@@ -61,6 +63,12 @@ void CScene::render(HDC _dc)
 {
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i)
 	{
+		if (i == (UINT)GROUP_TYPE::TILE)
+		{
+			render_tile(_dc);
+			continue;
+		}
+
 		vector<CObject*>::iterator iter = m_arrObj[i].begin();
 		for (; iter != m_arrObj[i].end();)
 		{
@@ -75,6 +83,37 @@ void CScene::render(HDC _dc)
 			}
 		}
 	}
+}
+
+void CScene::render_tile(HDC _dc)
+{
+	const vector<CObject*>& vecTile = GetGroupObejct(GROUP_TYPE::TILE);
+
+	Vec2 vCamLook = CCamera::GetInst()->GetLookAt();
+	Vec2 vResolution = CCore::GetInst()->GetResoultionVec();
+	Vec2 vLeftTop = vCamLook - vResolution / 2.f;
+	
+	int iLTCol = (int)vLeftTop.x / TILE_SIZE;
+	int iLTRow = (int)vLeftTop.y / TILE_SIZE;
+	
+
+	int iClientWidth = ((int)vResolution.x / TILE_SIZE) + 1;
+	int iClientHeight = ((int)vResolution.y / TILE_SIZE) + 1;
+
+	for (int iCurRow = iLTRow; iCurRow < (iLTRow + iClientHeight); ++iCurRow)
+	{
+		for (int iCurCol = iLTCol; iCurCol < (iLTCol + iClientWidth); ++iCurCol)
+		{
+			if (iCurCol < 0 || m_iTileX <= iCurCol
+				|| iCurRow < 0 || m_iTileY <= iCurRow)
+			{
+				continue;
+			}
+			int iIdx = (m_iTileX * iCurRow) + iCurCol;
+			vecTile[iIdx]->render(_dc);
+		}
+	}
+
 }
 
 

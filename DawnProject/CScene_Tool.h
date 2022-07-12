@@ -14,6 +14,9 @@ public:
     virtual void Exit();
 
 public:
+    void ChangeScene(DWORD_PTR, DWORD_PTR);
+
+public:
     void SetTileIndex();
 
     void SaveTileData();

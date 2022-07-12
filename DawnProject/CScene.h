@@ -24,6 +24,7 @@ public:
 	virtual void finalupdate();
 	virtual void render(HDC _dc);
 
+	void render_tile(HDC _dc);	//렌더링 개선
 
 
 	virtual void Enter() = 0; // 순수 가상함수 해당 Scene에 진입 시 호출.

@@ -4,6 +4,7 @@
 #include "CCollider.h"
 #include "CObject.h"
 #include "func.h"
+#include "CCamera.h"
 
 CProjectile::CProjectile()
 	:m_fTheta(PI / 2.f)
@@ -38,7 +39,7 @@ void CProjectile::render(HDC _dc)
 {
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetScale();
-
+	vPos = CCamera::GetInst()->GetRenderPos(vPos);
 	Ellipse(_dc,
 		(int)vPos.x - vScale.x / 2,
 		(int)vPos.y - vScale.y / 2,

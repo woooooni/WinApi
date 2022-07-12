@@ -39,12 +39,14 @@ void CScene_Tool::Enter()
 	pPanelUI->SetName(L"ParentUI");
 	pPanelUI->SetScale(Vec2(500.f, 300.f));
 	pPanelUI->SetPos(Vec2((vResolution.x - pPanelUI->GetScale().x), 0.f));
+	pPanelUI->SetText(L"panel");
 
 	CButtonUI* pBtnUI = new CButtonUI;
 	pBtnUI->SetName(L"ChildUI");
 	pBtnUI->SetScale(Vec2(100.f, 40.f));
 	pBtnUI->SetPos(Vec2(0.f, 0.f));
-	pBtnUI->SetClickedCallBack(this, ((SCENE_MEMFUNC)&CScene_Tool::SaveTileData));
+	pBtnUI->SetClickedCallBack(this, ((SCENE_MEMFUNC)&CScene_Tool::ChangeScene));
+	pBtnUI->SetText(L"Start·Î");
 	pPanelUI->AddChild(pBtnUI);
 	AddObject(pPanelUI, GROUP_TYPE::UI);
 
@@ -190,7 +192,7 @@ void CScene_Tool::LoadTileData()
 	}
 }
 
-void ChangeScene(DWORD_PTR, DWORD_PTR)
+void CScene_Tool::ChangeScene(DWORD_PTR, DWORD_PTR)
 {
 	ChangeSceneEvt(SCENE_TYPE::START);
 }

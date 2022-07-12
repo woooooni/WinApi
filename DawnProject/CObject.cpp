@@ -24,13 +24,13 @@ CObject::CObject(const CObject& _origin)
 	, m_pAnimator(nullptr)
 	, m_bAlive(true)
 {
-	if (_origin.m_pCollider)
+	if (nullptr != _origin.m_pCollider)
 	{
 		m_pCollider = new CCollider(*_origin.m_pCollider);
 		m_pCollider->m_pOwner = this;
 	}
 
-	if (_origin.m_pAnimator)
+	if (nullptr != _origin.m_pAnimator)
 	{
 		m_pAnimator = new CAnimator(*_origin.m_pAnimator);
 		m_pAnimator->m_pOwner = this;

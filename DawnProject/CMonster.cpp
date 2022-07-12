@@ -1,7 +1,10 @@
 #include "pch.h"
-#include "CMonster.h"
 #include "CResMgr.h"
 #include "CCollider.h"
+#include "AI.h"
+#include "CTexture.h"
+#include "CObject.h"
+#include "CMonster.h"
 
 CMonster::CMonster() 
 {
@@ -15,12 +18,13 @@ CMonster::CMonster()
 }
 CMonster::~CMonster() 
 {
-
+	if (nullptr != m_pAI)
+		delete m_pAI;
 }
 
 void CMonster::update()
 {
-
+	m_pAI->update();
 }
 
 void CMonster::render(HDC _dc)

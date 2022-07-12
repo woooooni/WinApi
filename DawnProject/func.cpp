@@ -2,7 +2,6 @@
 #include "CEventMgr.h"
 
 //프로젝트에서 공동으로 사용할 함수를 정의.
-
 void CreateObj(CObject* _pObj, GROUP_TYPE _eGroup)
 {
 	tEvent evn = {};
