@@ -4,6 +4,7 @@
 
 class CCollider;
 class CAnimator;
+class CRigidBody;
 
 class CObject
 {
@@ -17,6 +18,9 @@ private:
 
 	//Animaotr ÄÄÆ÷³ÍÆ®
 	CAnimator* m_pAnimator;
+
+	//RigidBody ÄÄÆ÷³ÍÆ®
+	CRigidBody* m_pRigidBody;
 
 	bool		m_bAlive;
 
@@ -43,6 +47,8 @@ public:
 	void CreateAnimator();
 	CAnimator* GetAnimator() { return m_pAnimator; }
 
+	void CreateRigidBody();
+	CRigidBody* GetRigidBody() { return m_pRigidBody; }
 private:
 	void SetDead() { m_bAlive = false; }
 

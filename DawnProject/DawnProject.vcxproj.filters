@@ -131,6 +131,9 @@
     <Filter Include="Engine\09. Factory\Monster Factory">
       <UniqueIdentifier>{b6fd8418-e0fe-4bfd-9b07-016a3ec6ac51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07. Component\RigidBody">
+      <UniqueIdentifier>{cdc82779-361d-45d6-adad-a10081a04acc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DawnProject.h">
@@ -259,6 +262,9 @@
     <ClInclude Include="CMonsterFactory.h">
       <Filter>Engine\09. Factory\Monster Factory</Filter>
     </ClInclude>
+    <ClInclude Include="CRigidBody.h">
+      <Filter>Engine\07. Component\RigidBody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -365,6 +371,9 @@
     </ClCompile>
     <ClCompile Include="CMonsterFactory.cpp">
       <Filter>Engine\09. Factory\Monster Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="CRigidBody.cpp">
+      <Filter>Engine\07. Component\RigidBody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

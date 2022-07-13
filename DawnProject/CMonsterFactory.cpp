@@ -2,6 +2,7 @@
 #include "AI.h"
 #include "CObject.h"
 #include "CMonster.h"
+#include "CRigidBody.h"
 #include "CIdleState.h";
 #include "CTraceState.h"
 #include "CMonsterFactory.h"
@@ -26,11 +27,14 @@ CMonster* CMonsterFactory::CreateMonster(MONSTER_TYPE _eType, Vec2 _vPos)
 
 		pMon->SetMonInfo(info);
 
-		AI* pAI = new AI;
+		pMon->CreateRigidBody();
+		pMon->GetRigidBody()->SetMass(1.f);
+
+		/*AI* pAI = new AI;
 		pAI->AddState(new CIdleState);
 		pAI->AddState(new CTraceState);
 		pAI->SetCurState(MONSTER_STATE::IDLE);
-		pMon->SetAI(pAI);
+		pMon->SetAI(pAI);*/
 	}
 		break;
 	case MONSTER_TYPE::RANGE:

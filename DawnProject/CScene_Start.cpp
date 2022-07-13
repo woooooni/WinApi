@@ -1,22 +1,38 @@
 #include "pch.h"
 #include "CScene_Start.h"
+
 #include "CCore.h"
+
 #include "CObject.h"
 #include "CPlayer.h"
-#include "CTexture.h"
-#include "CPathMgr.h"
-#include "CCollisionMgr.h"
 #include "CMonster.h"
+
+#include "CPathMgr.h"
+#include "CTexture.h"
+
+#include "CCollisionMgr.h"
+
 #include "CSceneMgr.h"
 #include "CKeyMgr.h"
 #include "CCamera.h"
+#include "CTimeMgr.h"
+
 #include "AI.h"
 #include "CState.h"
 #include "CIdleState.h"
 #include "CTraceState.h"
+#include "CRigidBody.h"
+
 #include "CMonsterFactory.h"
+#include "SelectGDI.h"
 
 CScene_Start::CScene_Start()
+	: m_vForcePos{}
+	, m_bUseForce(false)
+	, m_fForceRadius(500.f)
+	, m_fCurRadius(0.f)
+	, m_fForce(500.f)
+
 {
 
 }
@@ -28,6 +44,41 @@ CScene_Start::~CScene_Start()
 
 void CScene_Start::update()
 {
+
+	if (KEY_HOLD(KEY::LBTN))
+	{
+		m_bUseForce = true;
+		CreateForce();
+	}
+	else
+	{
+		m_bUseForce = false;
+	}
+
+	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i)
+	{
+		const vector<CObject*>& vecObj = GetGroupObejct((GROUP_TYPE)i);
+		for (size_t j = 0; j < vecObj.size(); ++j)
+		{
+			if (!vecObj[j]->IsDead())
+			{
+				if (m_bUseForce && (vecObj[j]->GetRigidBody() != nullptr))
+				{
+					Vec2 vDiff = vecObj[j]->GetPos() - m_vForcePos;
+					float fLen = vDiff.Length();
+					if (fLen < m_fForceRadius)
+					{
+						float fRatio = 1.f - (fLen / m_fForceRadius);
+						float fForce = m_fForce * fRatio;
+
+						vecObj[j]->GetRigidBody()->AddForce(vDiff.Normalize()* fForce);
+					}
+				}
+				vecObj[j]->update();
+			}
+		}
+	}
+
 	CScene::update();
 	if (KEY_TAP(KEY::ENTER))
 	{
@@ -38,6 +89,31 @@ void CScene_Start::update()
 	//	Vec2 vLookAt = CCamera::GetInst()->GetRealPos(MOUSE_POS);
 	//	CCamera::GetInst()->SetLookAt(vLookAt);
 	//}
+
+}
+
+void CScene_Start::render(HDC _dc)
+{
+	CScene::render(_dc);
+	if (!m_bUseForce)
+		return;
+
+	SelectGDI gdi1(_dc, BRUSH_TYPE::HOLLOW);
+	SelectGDI gdi2(_dc, PEN_TYPE::GREEN);
+	m_fCurRadius += m_fForceRadius * 2.f * DeltaTimef;
+	if (m_fCurRadius > m_fForceRadius)
+	{
+		m_fCurRadius = 0.f;
+	}
+	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_vForcePos);
+
+	Ellipse(
+		_dc
+		, vRenderPos.x - m_fCurRadius
+		, vRenderPos.y - m_fCurRadius
+		, vRenderPos.x + m_fCurRadius
+		, vRenderPos.y + m_fCurRadius);
+	
 }
 
 void CScene_Start::Enter()
@@ -74,5 +150,11 @@ void CScene_Start::Exit()
 {
 	DeleteAll();
 	CCollisionMgr::GetInst()->Reset();
+}
+
+void CScene_Start::CreateForce()
+{
+	m_vForcePos = CCamera::GetInst()->GetRealPos(MOUSE_POS);
+
 }
 

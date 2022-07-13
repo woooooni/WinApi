@@ -11,9 +11,12 @@
 #include "CCollider.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
+#include "CRigidBody.h"
 
 CPlayer::CPlayer()
 {
+
+	//Collider
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(100.f, 100.f));
 
@@ -32,6 +35,10 @@ CPlayer::CPlayer()
 	{
 		pAnim->GetFrame(i).vOffset = Vec2(0.f, 0.f);
 	}
+
+	//RigidBody
+	CreateRigidBody();
+
 	
 }
 
@@ -42,22 +49,43 @@ CPlayer::~CPlayer()
 
 void CPlayer::update()
 {
-	Vec2 _vecPos = GetPos();
+
+	CRigidBody* pRigid = GetRigidBody();
+
+	//KEY_HOLD
 	if (KEY_HOLD(KEY::UP))
 	{
-		_vecPos.y -= 200.f * DeltaTimef;
+		pRigid->AddForce(Vec2(0.f, -200.f));
 	}
 	if (KEY_HOLD(KEY::LEFT))
 	{
-		_vecPos.x -= 200.f * DeltaTimef;
+		pRigid->AddForce(Vec2(-200.f, 0.f));
 	}
 	if (KEY_HOLD(KEY::DOWN))
 	{
-		_vecPos.y += 200.f * DeltaTimef;
+		pRigid->AddForce(Vec2(0.f, 200.f));
 	}
 	if (KEY_HOLD(KEY::RIGHT))
 	{
-		_vecPos.x += 200.f * DeltaTimef;
+		pRigid->AddForce(Vec2(200.f, 0.f));
+	}
+
+	//KEY_TAP
+	if (KEY_TAP(KEY::UP))
+	{
+		pRigid->AddVelocity(Vec2(0.f, -200.f));
+	}
+	if (KEY_TAP(KEY::LEFT))
+	{
+		pRigid->AddVelocity(Vec2(-200.f, 0.f));
+	}
+	if (KEY_TAP(KEY::DOWN))
+	{
+		pRigid->AddVelocity(Vec2(0.f, 200.f));
+	}
+	if (KEY_TAP(KEY::RIGHT))
+	{
+		pRigid->AddVelocity(Vec2(200.f, 0.f));
 	}
 
 	if (KEY_TAP(KEY::SPACE))
@@ -65,7 +93,6 @@ void CPlayer::update()
 		CreateProjectile();
 	}
 
-	SetPos(_vecPos);
 	GetAnimator()->update();
 }
 
