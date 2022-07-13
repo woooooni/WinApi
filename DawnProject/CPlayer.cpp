@@ -14,11 +14,16 @@
 #include "CRigidBody.h"
 
 CPlayer::CPlayer()
+	: m_eCurState(PLAYER_STATE::IDLE)
+	, m_iDir(1)
 {
 
 	//Collider
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(100.f, 100.f));
+
+	//RigidBody
+	CreateRigidBody();
 
 
 	//Animator
@@ -32,14 +37,7 @@ CPlayer::CPlayer()
 	CAnimation* pAnim = GetAnimator()->FindAnimation(L"WALK_DOWN");
 
 	for (int i = 0; i < pAnim->GetMaxFrame(); i++)
-	{
 		pAnim->GetFrame(i).vOffset = Vec2(0.f, 0.f);
-	}
-
-	//RigidBody
-	CreateRigidBody();
-
-	
 }
 
 CPlayer::~CPlayer()
@@ -51,6 +49,8 @@ void CPlayer::update()
 {
 
 	CRigidBody* pRigid = GetRigidBody();
+
+	update_state();
 
 	//KEY_HOLD
 	if (KEY_HOLD(KEY::UP))
@@ -163,4 +163,8 @@ void CPlayer::CreateProjectile()
 	//이벤트 매니저가 처리
 	/*CScene* pCurScene = CSceneMgr::GetInst()->GetCurrScene();
 	pCurScene->AddObject(projectile, GROUP_TYPE::PLAYER);*/
+}
+
+void CPlayer::update_state()
+{
 }
