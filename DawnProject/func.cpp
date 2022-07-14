@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "CObject.h"
 #include "CEventMgr.h"
 
 //프로젝트에서 공동으로 사용할 함수를 정의.
@@ -6,6 +7,7 @@ void CreateObj(CObject* _pObj, GROUP_TYPE _eGroup)
 {
 	tEvent evn = {};
 	evn.eEven = EVENT_TYPE::CREATE_OBJECT;
+	_pObj->SetType(_eGroup);
 	evn.lParam = (DWORD_PTR)_pObj;
 	evn.wParam = (DWORD_PTR)_eGroup;
 
@@ -39,3 +41,5 @@ void ChangeAIState(AI* _pAI, MONSTER_STATE _eNext)
 	evn.wParam = (DWORD_PTR)_eNext;
 	CEventMgr::GetInst()->AddEvent(evn);
 }
+
+

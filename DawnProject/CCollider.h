@@ -15,6 +15,9 @@ private:
 	UINT		m_iId;			//Collider 고유 아이디
 	PEN_TYPE	ePenType;
 
+	bool		m_bTrigger;		//Collider 충돌 시, 밀어낼지 여부
+	bool		m_bActive;		//Collider 활성/비활성
+
 public:
 
 	UINT GetId() { return m_iId; }
@@ -29,6 +32,7 @@ public:
 
 	CObject* GetObj() { return m_pOwner; }
 
+	void SetTrigger(bool _bTrigger) { m_bTrigger = _bTrigger; }
 public:
 	void finalupdate();
 	void render(HDC _dc);
@@ -38,6 +42,11 @@ public:
 	void OnCollisionEnter(CCollider* _pOther);				// 충돌체가 진입한 경우 호출되는 함수.
 	void OnCollisionExit(CCollider* _pOther);				// 충돌체가 빠져나간 경우 호출되는 함수.
 	CCollider& operator = (CCollider& _origin) = delete;	// operator 함수 삭제. Default도 생성되지 않음.
+
+
+private:
+	void PushOutInterSection(CCollider* _pOther);
+	RECT GetInterSection(CCollider* _pOther);
 
 public:
 	CCollider();

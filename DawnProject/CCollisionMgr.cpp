@@ -71,7 +71,7 @@ void CCollisionMgr::CollisionUpdate(GROUP_TYPE _eLeft, GROUP_TYPE _eRight)
 			// 두 Collider 조합 아이디 생성.
 			COLLIDER_ID ID;
 			ID.iLeft_id = pLeftCol->GetId();
-			ID.iLeft_id = pRightCol->GetId();
+			ID.iRight_id = pRightCol->GetId();
 			
 			//이전 프레임 충돌정보 가져오기.
 			 iter = m_mapColInfo.find(ID.ID);

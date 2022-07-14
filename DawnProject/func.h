@@ -46,3 +46,11 @@ T1 clamp(T1 src, T1 min, T1 max)
 		return min;
 	return src;
 }
+
+template<typename T1>
+void swap(T1* t1, T1* t2)
+{
+	T1 temp = *t1;
+	*t1 = *t2;
+	*t2 = temp;
+}

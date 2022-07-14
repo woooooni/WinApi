@@ -6,6 +6,7 @@
 #include "CObject.h"
 #include "CPlayer.h"
 #include "CMonster.h"
+#include "CGround.h"
 
 #include "CPathMgr.h"
 #include "CTexture.h"
@@ -121,8 +122,9 @@ void CScene_Start::Enter()
 	//Object 추가
 	//Player
 	CPlayer* pPlayer = new CPlayer;
-	pPlayer->SetPos(Vec2(640, 384));
+	pPlayer->SetPos(Vec2(640.f, 384.f));
 	pPlayer->SetScale(Vec2(100.f, 100.f));
+	pPlayer->SetType(GROUP_TYPE::PLAYER);
 	AddObject(pPlayer, GROUP_TYPE::PLAYER);
 	RegisterPlayer(pPlayer);
 
@@ -131,11 +133,19 @@ void CScene_Start::Enter()
 	AddObject(pMon, GROUP_TYPE::MONSTER);
 
 
+	// 땅 배치
+	CGround* pGround = new CGround;
+	pGround->SetPos(Vec2(640.f, 584.f));
+	pGround->SetScale(Vec2(200.f, 60.f));
+	pGround->SetType(GROUP_TYPE::GROUND);
+	AddObject(pGround, GROUP_TYPE::GROUND);
+
 	// 충돌지점
-	// Player 그룹과 Monster, Projectile간의 충돌체크
+	// 그룹간의 충돌체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER_PROJECTILE);
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PLAYER_PROJECTILE);
+	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::GROUND, GROUP_TYPE::PLAYER);
 
 	//CameraLook 지정
 	Vec2 vResolution = CCore::GetInst()->GetResoultionVec();
@@ -144,6 +154,8 @@ void CScene_Start::Enter()
 	//Camera효과 지정
 	CCamera::GetInst()->FadeOut(1.f);
 	CCamera::GetInst()->FadeIn(1.f);
+
+	init();
 }
 
 void CScene_Start::Exit()

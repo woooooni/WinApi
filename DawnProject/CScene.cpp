@@ -37,6 +37,17 @@ const wstring& CScene::GetName()
 	return m_strName;
 }
 
+void CScene::init()
+{
+	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i)
+	{
+		for (size_t j = 0; j < m_arrObj[i].size(); ++j)
+		{
+			m_arrObj[i][j]->init();
+		}
+	}
+}
+
 void CScene::update()
 {
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) 

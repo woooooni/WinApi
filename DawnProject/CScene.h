@@ -22,6 +22,7 @@ public:
 	UINT GetTileY() { return m_iTileY; }
 
 public:
+	virtual void init();
 	virtual void update();
 	virtual void finalupdate();
 	virtual void render(HDC _dc);

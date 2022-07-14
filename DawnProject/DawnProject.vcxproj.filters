@@ -134,6 +134,9 @@
     <Filter Include="Engine\07. Component\RigidBody">
       <UniqueIdentifier>{cdc82779-361d-45d6-adad-a10081a04acc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Ground">
+      <UniqueIdentifier>{5193307e-5d0e-4529-ab30-08d2b822fae1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DawnProject.h">
@@ -265,6 +268,9 @@
     <ClInclude Include="CRigidBody.h">
       <Filter>Engine\07. Component\RigidBody</Filter>
     </ClInclude>
+    <ClInclude Include="CGround.h">
+      <Filter>Engine\04. Object\Ground</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -374,6 +380,9 @@
     </ClCompile>
     <ClCompile Include="CRigidBody.cpp">
       <Filter>Engine\07. Component\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="CGround.cpp">
+      <Filter>Engine\04. Object\Ground</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

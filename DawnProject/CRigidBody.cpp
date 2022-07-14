@@ -5,8 +5,9 @@
 CRigidBody::CRigidBody()
 	: m_pOwner(nullptr)
 	, m_fMass(1.f)
-	, m_fFricCoeff(100.f)
+	, m_fFricCoeff(200.f)
 	, m_fMaxSpeed(200.f)
+	, m_bGravity(true)
 {
 }
 
@@ -24,6 +25,13 @@ CRigidBody::CRigidBody(const CRigidBody& _origin)
 
 void CRigidBody::finalupdate()
 {
+
+	if (IsGravity())
+	{
+		update_gravity();
+	}
+
+
 
 	//ÈûÀÇ Å©±â
 	float fForce = m_vForce.Length();
@@ -89,7 +97,10 @@ void CRigidBody::Move()
 		vPos += m_vVelocity * DeltaTimef;
 		m_pOwner->SetPos(vPos);
 	}
-	
 }
 
+void CRigidBody::update_gravity()
+{
+
+}
 

@@ -39,7 +39,7 @@ public:
 	HDC GetMainDc() { return m_hDC; };
 
 	POINT GetResoultion() { return m_ptResolution; }
-	Vec2 GetResoultionVec() { return m_ptResolutionVec; }
+	Vec2 GetResoultionVec() { return Vec2((float)m_ptResolution.x, (float)m_ptResolution.y); }
 	HBRUSH GetBrush(BRUSH_TYPE _eType) { return m_arrBrush[(UINT)_eType]; }
 	HPEN GetPen(PEN_TYPE _eType) { return m_arrPen[(UINT)_eType]; };
 };

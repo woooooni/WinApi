@@ -16,8 +16,11 @@ private:
 	
 
 	float		m_fMass;		//	질량
-	float		m_fFricCoeff;		//	마찰계수
+	float		m_fFricCoeff;	//	마찰계수
 	float		m_fMaxSpeed;	//	최대속도
+
+	bool		m_bGravity;		// 중력 영향 여부
+	bool		m_bGround;		// 바닥에 붙어있는지 여부
 
 
 public:
@@ -28,10 +31,21 @@ public:
 
 	void AddVelocity(Vec2 _velocity) { m_vVelocity += _velocity; }
 	void SetVelocity(Vec2 _velocity) { m_vVelocity = _velocity; }
+
+	float GetSpeed(){ return m_vVelocity.Length(); }
 	void SetMaxVelocity(float _fVelocity) { m_fMaxSpeed = _fVelocity; }
+
+	void SetGravity(bool _bGravity) { m_bGravity = _bGravity; }
+	bool IsGravity() { return m_bGravity; }
+
+	void SetGround(bool _bGround) { m_bGround = _bGround; }
+
 private:
 	void Move();
 
+
+private:
+	void update_gravity();
 public:
 	void finalupdate();
 

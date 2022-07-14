@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "CCore.h"
 #include "CAnimation.h"
 #include "CTexture.h"
 #include "CAnimator.h"
@@ -65,18 +66,8 @@ void CAnimation::render(HDC _dc)
 
 	//카메라의 위치에 따른 렌더링 좌표로 전환.
 	vPos = CCamera::GetInst()->GetRenderPos(vPos);
-
-	TransparentBlt(_dc
-		, (int)(vPos.x - m_vecFrame[m_iCurFrm].vSlice.x / 2.f)
-		, (int)(vPos.y - m_vecFrame[m_iCurFrm].vSlice.y / 2.f)
-		, (int)(m_vecFrame[m_iCurFrm].vSlice.x)
-		, (int)(m_vecFrame[m_iCurFrm].vSlice.y)
-		, m_pTex->GetDC()
-		, (int)(m_vecFrame[m_iCurFrm].vLT.x)
-		, (int)(m_vecFrame[m_iCurFrm].vLT.y)
-		, (int)(m_vecFrame[m_iCurFrm].vSlice.x)
-		, (int)(m_vecFrame[m_iCurFrm].vSlice.y)
-		, RGB(255, 0, 255));
+	draw(_dc, vPos);
+	
 }
 
 void CAnimation::Create(CTexture* _pTex, 
@@ -94,5 +85,20 @@ void CAnimation::Create(CTexture* _pTex,
 
 		m_vecFrame.push_back(frm);
 	}
+}
+
+void CAnimation::draw(HDC _dc, Vec2 _vRenderPos)
+{
+	TransparentBlt(_dc
+		, (int)(_vRenderPos.x - m_vecFrame[m_iCurFrm].vSlice.x / 2.f)
+		, (int)(_vRenderPos.y - m_vecFrame[m_iCurFrm].vSlice.y / 2.f)
+		, (int)(m_vecFrame[m_iCurFrm].vSlice.x)
+		, (int)(m_vecFrame[m_iCurFrm].vSlice.y)
+		, m_pTex->GetDC()
+		, (int)(m_vecFrame[m_iCurFrm].vLT.x)
+		, (int)(m_vecFrame[m_iCurFrm].vLT.y)
+		, (int)(m_vecFrame[m_iCurFrm].vSlice.x)
+		, (int)(m_vecFrame[m_iCurFrm].vSlice.y)
+		, RGB(255, 0, 255));
 }
 

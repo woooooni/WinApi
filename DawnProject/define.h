@@ -30,6 +30,7 @@ enum class GROUP_TYPE
 {
 	DEFAULT,
 	TILE,
+	GROUND,
 	MONSTER,
 	PLAYER,
 	PLAYER_PROJECTILE,
@@ -77,10 +78,13 @@ enum class EVENT_TYPE
 enum class PLAYER_STATE
 {
 	IDLE,
-	MOVE,
-	TRACE,
-	ATTACK,
-	DEAD,
+    WALK,
+    ATTACK,
+    JUMP,
+    ALERT,
+    PRONE,
+    ROPE,
+    LADDER,
 	END,
 };
 

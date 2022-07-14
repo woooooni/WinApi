@@ -46,6 +46,9 @@ public:
 
 	void Create(CTexture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, float _fDuration, UINT _iFrameCount);
 
+
+private:
+	void draw(HDC _dc, Vec2 _vRenderPos);
 public:
 	CAnimation();
 	~CAnimation();

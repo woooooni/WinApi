@@ -114,7 +114,6 @@ void CObject::component_render(HDC _dc)
 	{
 		m_pCollider->render(_dc);
 	}
-
 	if (nullptr != m_pAnimator)
 	{
 		m_pAnimator->render(_dc);
