@@ -86,14 +86,14 @@ void CObject::update()
 
 void CObject::finalupdate()
 {
-	if (nullptr != m_pCollider)
-		m_pCollider->finalupdate();
-
 	if (nullptr != m_pAnimator)
 		m_pAnimator->finalupdate();
 
 	if (nullptr != m_pRigidBody)
 		m_pRigidBody->finalupdate();
+
+	if (nullptr != m_pCollider)
+		m_pCollider->finalupdate();
 }
 
 void CObject::render(HDC _dc)

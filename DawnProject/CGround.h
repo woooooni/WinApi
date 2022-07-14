@@ -16,7 +16,7 @@ public:
 
 public:
     virtual void OnCollisionEnter(CCollider* _pOther);
-    
+    virtual void OnCollision(CCollider* _pOther);
 public:
     CGround();
     ~CGround();

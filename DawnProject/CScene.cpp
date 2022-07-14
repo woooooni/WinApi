@@ -95,6 +95,8 @@ void CScene::render(HDC _dc)
 			}
 		}
 	}
+
+
 }
 
 void CScene::render_tile(HDC _dc)

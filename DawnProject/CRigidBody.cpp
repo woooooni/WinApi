@@ -5,9 +5,11 @@
 CRigidBody::CRigidBody()
 	: m_pOwner(nullptr)
 	, m_fMass(1.f)
-	, m_fFricCoeff(200.f)
-	, m_fMaxSpeed(200.f)
+	, m_fFricCoeff(100.f)
+	, m_vMaxVelocity(Vec2(200.f, 600.f))
 	, m_bGravity(true)
+	, m_bGround(false)
+	, m_vAccelA(Vec2(0, 0))
 {
 }
 
@@ -18,6 +20,7 @@ CRigidBody::~CRigidBody()
 CRigidBody::CRigidBody(const CRigidBody& _origin)
 	: m_pOwner(_origin.m_pOwner)
 	, m_fMass(_origin.m_fMass)
+	, m_vAccelA(Vec2(0, 0))
 {
 }
 
@@ -26,10 +29,8 @@ CRigidBody::CRigidBody(const CRigidBody& _origin)
 void CRigidBody::finalupdate()
 {
 
-	if (IsGravity())
-	{
+	if (IsGravity() && IsGround() == false)
 		update_gravity();
-	}
 
 
 
@@ -45,10 +46,14 @@ void CRigidBody::finalupdate()
 
 		//가속도
 		m_vAccel = m_vForce * m_fAccel;//m_vAccel = m_vForce * m_fAccel;
-
-		//속도
-		m_vVelocity += m_vAccel * DeltaTimef;	
 	}
+
+	// 추가 가속도
+	m_vAccel += m_vAccelA;
+
+	//속도
+	m_vVelocity += m_vAccel * DeltaTimef;
+
 
 	//마찰력에 의한 반대방향으로의 가속도 적용.
 	if (!m_vVelocity.IsZero())
@@ -69,17 +74,30 @@ void CRigidBody::finalupdate()
 	}
 
 	//속도제한 검사
-	if (m_fMaxSpeed < m_vVelocity.Length())
-	{
-		m_vVelocity.Normalize();
-		m_vVelocity *= m_fMaxSpeed;
-	}
+	if (abs(m_vMaxVelocity.x) < abs(m_vVelocity.x))
+		m_vVelocity.x = (m_vVelocity.x / abs(m_vVelocity.x)) * abs(m_vMaxVelocity.x);
+
+	if (abs(m_vMaxVelocity.y) < abs(m_vVelocity.y))
+		m_vVelocity.y = (m_vVelocity.y / abs(m_vVelocity.y)) * abs(m_vMaxVelocity.y);
 
 	//속도에 따른 이동
 	Move();
 
 	//힘초기화
 	m_vForce = Vec2(0.f, 0.f);
+
+	//추가 가속도(중력) 초기화
+	m_vAccelA = Vec2(0.f, 0.f);
+
+	//가속도 초기화
+	m_vAccel = Vec2(0.f, 0.f);
+}
+
+void CRigidBody::SetGround(bool _bGround)
+{
+	m_bGround = _bGround;
+	if (IsGround())
+		SetVelocity(Vec2(m_vVelocity.x, 0.f));
 }
 
 void CRigidBody::Move()
@@ -101,6 +119,6 @@ void CRigidBody::Move()
 
 void CRigidBody::update_gravity()
 {
-
+	m_pOwner->GetRigidBody()->SetAccelAlpha(Vec2(0.f, 980.f));
 }
 
