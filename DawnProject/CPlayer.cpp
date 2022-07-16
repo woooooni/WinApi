@@ -22,7 +22,7 @@ CPlayer::CPlayer()
 	//Collider
 	CreateCollider();
 	GetCollider()->SetOffsetPos(Vec2(0.f, -10.f));
-	GetCollider()->SetScale(Vec2(70.f, 80.f));
+	GetCollider()->SetScale(Vec2(60.f, 80.f));
 
 	//RigidBody
 	CreateRigidBody();
@@ -39,6 +39,15 @@ CPlayer::CPlayer()
 
 	
 	CreateAnimator();
+
+	/*GetAnimator()->LoadAnimation(L"animation\\player\\idle.anim");
+	GetAnimator()->LoadAnimation(L"animation\\player\\alert.anim");
+	GetAnimator()->LoadAnimation(L"animation\\player\\walk.anim");
+	GetAnimator()->LoadAnimation(L"animation\\player\\jump.anim");
+	GetAnimator()->LoadAnimation(L"animation\\player\\dead.anim");
+	GetAnimator()->LoadAnimation(L"animation\\player\\prone.anim");*/
+
+	
 	GetAnimator()->CreateAnimation(L"IDLE", pTexIdle, Vec2(0.f, 0.f), Vec2(pTexIdle->Width() / 3, (float)pTexIdle->Height()), Vec2(pTexIdle->Width() / 3, 0.f), .5f, 3);
 	GetAnimator()->CreateAnimation(L"ALERT", pTexAlert, Vec2(0.f, 0.f), Vec2(pTexAlert->Width() / 3, (float)pTexAlert->Height()), Vec2(pTexAlert->Width() / 3, 0.f), .1f, 3);
 	GetAnimator()->CreateAnimation(L"WALK", pTexWalk, Vec2(0.f, 0.f), Vec2(pTexWalk->Width() / 4, (float)pTexWalk->Height()), Vec2(pTexWalk->Width() / 4, 0.f), .1f, 4);
@@ -46,6 +55,12 @@ CPlayer::CPlayer()
 	GetAnimator()->CreateAnimation(L"DEAD", pTexDead, Vec2(0.f, 0.f), Vec2(pTexDead->Width(), (float)pTexDead->Height()), Vec2(0.f, 0.f), .1f, 1);
 	GetAnimator()->CreateAnimation(L"PRONE", pTexProne, Vec2(0.f, 0.f), Vec2(pTexProne->Width(),(float)pTexProne->Height()), Vec2(0.f, 0.f), .1f, 1);
 
+	GetAnimator()->FindAnimation(L"IDLE")->Save(L"animation\\player\\idle.anim");
+	GetAnimator()->FindAnimation(L"ALERT")->Save(L"animation\\player\\alert.anim");
+	GetAnimator()->FindAnimation(L"WALK")->Save(L"animation\\player\\walk.anim");
+	GetAnimator()->FindAnimation(L"JUMP")->Save(L"animation\\player\\jump.anim");
+	GetAnimator()->FindAnimation(L"DEAD")->Save(L"animation\\player\\dead.anim");
+	GetAnimator()->FindAnimation(L"PRONE")->Save(L"animation\\player\\prone.anim");
 	//CAnimation* pAnim = GetAnimator()->FindAnimation(L"WALK_DOWN");
 
 	//for (int i = 0; i < pAnim->GetMaxFrame(); i++)
@@ -177,11 +192,11 @@ void CPlayer::update_move()
 	//KEY_TAP
 	if (KEY_TAP(KEY::LEFT))
 	{
-		pRigid->AddVelocity(Vec2(-200.f, pRigid->GetVelocity().y));
+		pRigid->AddVelocity(Vec2(-200.f, 0.f));
 	}
 	if (KEY_TAP(KEY::RIGHT))
 	{
-		pRigid->AddVelocity(Vec2(200.f, pRigid->GetVelocity().y));
+		pRigid->AddVelocity(Vec2(200.f, 0.f));
 	}
 	if (KEY_TAP(KEY::SPACE))
 	{
@@ -249,6 +264,15 @@ void CPlayer::OnCollisionEnter(CCollider* _pOther)
 
 void CPlayer::OnCollision(CCollider* _pOther)
 {
+	CObject* pOtherObj = _pOther->GetObj();
+	if (pOtherObj->GetType() == GROUP_TYPE::GROUND)
+	{
+		CRigidBody* rigid = GetRigidBody();
+		if (rigid == nullptr)
+			return;
+
+		rigid->SetGround(true);
+	}
 }
 
 void CPlayer::OnCollisionExit(CCollider* _pOther)

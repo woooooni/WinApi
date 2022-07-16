@@ -1,0 +1,25 @@
+[Animation Name] ALERT
+
+[Texture Name] Player_Alert
+
+[Texture Path] texture\Player\Alert.bmp
+
+[Frame Count] 3
+[Frame Index] 0
+[Slice Size] 90, 73
+[Offset] 0, 0
+[Duration] 0
+[Left Top] 0, 0
+
+[Frame Index] 1
+[Slice Size] 90, 73
+[Offset] 0, 0
+[Duration] 0
+[Left Top] 90, 0
+
+[Frame Index] 2
+[Slice Size] 90, 73
+[Offset] 0, 0
+[Duration] 0
+[Left Top] 180, 0
+

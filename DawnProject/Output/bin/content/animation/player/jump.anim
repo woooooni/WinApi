@@ -1,0 +1,13 @@
+[Animation Name] JUMP
+
+[Texture Name] Player_Jump
+
+[Texture Path] texture\Player\Jump.bmp
+
+[Frame Count] 1
+[Frame Index] 0
+[Slice Size] 106, 160
+[Offset] 0, 0
+[Duration] 0
+[Left Top] 0, 0
+

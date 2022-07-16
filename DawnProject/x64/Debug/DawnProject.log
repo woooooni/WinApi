@@ -1,19 +1,44 @@
-﻿  unity_RMI9ORCVSPEMPNPH.cpp
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CMonsterFactory.cpp(6,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CPlayer.cpp(42,91): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CPlayer.cpp(42,147): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CPlayer.cpp(43,94): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CPlayer.cpp(43,152): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CPlayer.cpp(44,91): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CPlayer.cpp(44,147): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CPlayer.cpp(45,88): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CPlayer.cpp(46,88): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CPlayer.cpp(47,91): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(13,1): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(47,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(46,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(45,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CProjectile.cpp(44,15): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CScene.cpp(121,32): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CScene.cpp(122,32): warning C4018: '<=': signed 또는 unsigned가 일치하지 않습니다.
+﻿  unity_108VBQI48ZKOCSH3.cpp
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CCollider.cpp(151,14): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CCollider.cpp(152,13): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CCollider.cpp(153,68): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CCollider.cpp(154,69): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xstring(2603,27): warning C4244: '인수': 'wchar_t'에서 'const _Elem'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CAnimation.cpp(122): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CAnimation.cpp(122): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xstring(2603,27): warning C4244: '인수': 'const wchar_t'에서 'const _Elem'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CAnimation.cpp(129): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_const_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_const_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\CAnimation.cpp(129): message : 컴파일되는 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_const_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_const_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
   DawnProject.vcxproj -> C:\Users\xodnj\Desktop\Study\Cpp\WinApi\DawnProject\Output\bin_debug\DawnProject.exe

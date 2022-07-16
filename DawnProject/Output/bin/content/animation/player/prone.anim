@@ -1,0 +1,13 @@
+[Animation Name] PRONE
+
+[Texture Name] Player_Prone
+
+[Texture Path] texture\Player\Prone.bmp
+
+[Frame Count] 1
+[Frame Index] 0
+[Slice Size] 111, 55
+[Offset] 0, 0
+[Duration] 0
+[Left Top] 0, 0
+

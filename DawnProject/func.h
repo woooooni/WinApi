@@ -9,6 +9,9 @@ void DeleteObj(CObject* _pObj);
 void ChangeSceneEvt(SCENE_TYPE _eNext);
 void ChangeAIState(AI* _pAI, MONSTER_STATE _eNext);
 
+//file function
+void SaveWString(const wstring& _str, FILE* _pFile);
+void LoadWString(wstring& _str, FILE* _pFile);
 
 //템플릿은 헤더에 구현.
 template<typename T>

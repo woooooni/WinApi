@@ -1,0 +1,25 @@
+[Animation Name] IDLE
+
+[Texture Name] Player_Idle
+
+[Texture Path] texture\Player\Idle.bmp
+
+[Frame Count] 3
+[Frame Index] 0
+[Slice Size] 96, 85
+[Offset] 0, 0
+[Duration] 0
+[Left Top] 0, 0
+
+[Frame Index] 1
+[Slice Size] 96, 85
+[Offset] 0, 0
+[Duration] 0
+[Left Top] 96, 0
+
+[Frame Index] 2
+[Slice Size] 96, 85
+[Offset] 0, 0
+[Duration] 0
+[Left Top] 192, 0
+

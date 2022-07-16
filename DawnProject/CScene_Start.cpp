@@ -134,11 +134,15 @@ void CScene_Start::Enter()
 
 
 	// 땅 배치
-	CGround* pGround = new CGround;
-	pGround->SetPos(Vec2(640.f, 584.f));
-	pGround->SetScale(Vec2(200.f, 60.f));
-	pGround->SetType(GROUP_TYPE::GROUND);
-	AddObject(pGround, GROUP_TYPE::GROUND);
+	
+	for (int i = 0; i < 20; i++)
+	{
+		CGround* pGround = new CGround;
+		pGround->SetScale(Vec2(60.f, 60.f));
+		pGround->SetPos(Vec2(pGround->GetScale().x * i, 584.f));
+		pGround->SetType(GROUP_TYPE::GROUND);
+		AddObject(pGround, GROUP_TYPE::GROUND);
+	}
 
 	// 충돌지점
 	// 그룹간의 충돌체크

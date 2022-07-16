@@ -40,6 +40,8 @@ public:
 	tAnimFrame& GetFrame(int _iIdx) { return m_vecFrame[_iIdx]; }
 	UINT GetMaxFrame() { return (UINT)m_vecFrame.size(); }
 
+	void Save(const wstring& _strRelativePath);
+	void Load(const wstring& _strRelativePath);
 public:
 	void update();
 	void render(HDC _dc);
