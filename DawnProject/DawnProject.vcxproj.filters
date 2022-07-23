@@ -137,6 +137,9 @@
     <Filter Include="Engine\04. Object\Ground">
       <UniqueIdentifier>{5193307e-5d0e-4529-ab30-08d2b822fae1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07. Component\StateMachine">
+      <UniqueIdentifier>{c00d509f-6720-4418-9666-c42a35bfc2e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DawnProject.h">
@@ -271,6 +274,12 @@
     <ClInclude Include="CGround.h">
       <Filter>Engine\04. Object\Ground</Filter>
     </ClInclude>
+    <ClInclude Include="CComponent.h">
+      <Filter>Engine\07. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateMachine.h">
+      <Filter>Engine\07. Component\StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCore.cpp">
@@ -383,6 +392,12 @@
     </ClCompile>
     <ClCompile Include="CGround.cpp">
       <Filter>Engine\04. Object\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="CComponent.cpp">
+      <Filter>Engine\07. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateMachine.cpp">
+      <Filter>Engine\07. Component\StateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

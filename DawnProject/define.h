@@ -75,6 +75,15 @@ enum class EVENT_TYPE
 
 	END,
 };
+
+enum class COMPONENT_TYPE 
+{
+	RIGIDBODY,
+	COLLIDER,
+	ANIMATOR,
+	STATEMACHINE,
+	END
+};
 enum class PLAYER_STATE
 {
 	IDLE,

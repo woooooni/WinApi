@@ -48,19 +48,19 @@ CPlayer::CPlayer()
 	GetAnimator()->LoadAnimation(L"animation\\player\\prone.anim");
 
 	
-	/*GetAnimator()->CreateAnimation(L"IDLE", pTexIdle, Vec2(0.f, 0.f), Vec2(pTexIdle->Width() / 3, (float)pTexIdle->Height()), Vec2(pTexIdle->Width() / 3, 0.f), .5f, 3);
+	GetAnimator()->CreateAnimation(L"IDLE", pTexIdle, Vec2(0.f, 0.f), Vec2(pTexIdle->Width() / 3, (float)pTexIdle->Height()), Vec2(pTexIdle->Width() / 3, 0.f), .5f, 3);
 	GetAnimator()->CreateAnimation(L"ALERT", pTexAlert, Vec2(0.f, 0.f), Vec2(pTexAlert->Width() / 3, (float)pTexAlert->Height()), Vec2(pTexAlert->Width() / 3, 0.f), .1f, 3);
 	GetAnimator()->CreateAnimation(L"WALK", pTexWalk, Vec2(0.f, 0.f), Vec2(pTexWalk->Width() / 4, (float)pTexWalk->Height()), Vec2(pTexWalk->Width() / 4, 0.f), .1f, 4);
 	GetAnimator()->CreateAnimation(L"JUMP", pTexJump, Vec2(0.f, 0.f), Vec2(pTexJump->Width(), (float)pTexJump->Height()), Vec2(0.f, 0.f), .1f, 1);
 	GetAnimator()->CreateAnimation(L"DEAD", pTexDead, Vec2(0.f, 0.f), Vec2(pTexDead->Width(), (float)pTexDead->Height()), Vec2(0.f, 0.f), .1f, 1);
 	GetAnimator()->CreateAnimation(L"PRONE", pTexProne, Vec2(0.f, 0.f), Vec2(pTexProne->Width(),(float)pTexProne->Height()), Vec2(0.f, 0.f), .1f, 1);
 
-	GetAnimator()->FindAnimation(L"IDLE")->Save(L"animation\\player\\idle.anim");
-	GetAnimator()->FindAnimation(L"ALERT")->Save(L"animation\\player\\alert.anim");
-	GetAnimator()->FindAnimation(L"WALK")->Save(L"animation\\player\\walk.anim");
-	GetAnimator()->FindAnimation(L"JUMP")->Save(L"animation\\player\\jump.anim");
-	GetAnimator()->FindAnimation(L"DEAD")->Save(L"animation\\player\\dead.anim");
-	GetAnimator()->FindAnimation(L"PRONE")->Save(L"animation\\player\\prone.anim");*/
+	//GetAnimator()->FindAnimation(L"IDLE")->Save(L"animation\\player\\idle.anim");
+	//GetAnimator()->FindAnimation(L"ALERT")->Save(L"animation\\player\\alert.anim");
+	//GetAnimator()->FindAnimation(L"WALK")->Save(L"animation\\player\\walk.anim");
+	//GetAnimator()->FindAnimation(L"JUMP")->Save(L"animation\\player\\jump.anim");
+	//GetAnimator()->FindAnimation(L"DEAD")->Save(L"animation\\player\\dead.anim");
+	//GetAnimator()->FindAnimation(L"PRONE")->Save(L"animation\\player\\prone.anim");*/
 	//CAnimation* pAnim = GetAnimator()->FindAnimation(L"WALK_DOWN");
 
 	//for (int i = 0; i < pAnim->GetMaxFrame(); i++)

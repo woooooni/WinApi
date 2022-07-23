@@ -106,130 +106,130 @@ void CAnimation::draw(HDC _dc, Vec2 _vRenderPos)
 		, RGB(255, 0, 255));
 }
 
-void CAnimation::Save(const wstring& _strRelativePath)
-{
-	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
-	strFilePath += _strRelativePath;
-
-	FILE* pFile = nullptr;
-	_wfopen_s(&pFile, strFilePath.c_str(), L"wb");
-	assert(pFile);
-	
-	// Animation 이름 저장.
-	// TODO::자주 사용하므로, 함수화 하는것이 좋아보임.
-	// TODO::Serialization 공부.
-	fprintf(pFile, "[Animation Name]");
-	string strName = string(m_strName.begin(), m_strName.end());
-	fprintf(pFile, strName.c_str());
-	fprintf(pFile, "\n\n");
-
-	// 텍스쳐 저장
-	// 텍스쳐 키값
-	fprintf(pFile, "[Texture Name]");
-	strName = string(m_pTex->GetKey().begin(), m_pTex->GetKey().end());
-	fprintf(pFile, strName.c_str());
-	fprintf(pFile, "\n\n");
-
-
-	// 텍스쳐 상대 경로 저장
-	fprintf(pFile, "[Texture Path]");
-	strName = string(m_pTex->GetRelativePath().begin(), m_pTex->GetRelativePath().end());
-	fprintf(pFile, strName.c_str());
-	fprintf(pFile, "\n\n");
-
-
-	//Animation 모든 프레임 저장.(vector)
-	//프레임 갯수
-	fprintf(pFile, "[Frame Count]");
-	fprintf(pFile, "%d\n", (int)m_vecFrame.size());
-
-	//
-	for (size_t i = 0; i < m_vecFrame.size(); i++)
-	{
-		fprintf(pFile, "[Frame_Index]");
-		fprintf(pFile, "%d\n", (int)i);
-
-		fprintf(pFile, "[Slice_Size]");
-		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vSlice.x, (int)m_vecFrame[i].vSlice.y);
-
-		fprintf(pFile, "[Offset]");
-		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vOffset.x, (int)m_vecFrame[i].vOffset.y);
-
-		fprintf(pFile, "[Duration]");
-		fprintf(pFile, "%d\n", (int)m_vecFrame[i].fDuration);
-
-		fprintf(pFile, "[Left Top]");
-		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vLT.x, (int)m_vecFrame[i].vLT.y);
-
-		fprintf(pFile, "\n");
-		
-	}
-	fclose(pFile);
-}
-
-void CAnimation::Load(const wstring& _strRelativePath)
-{
-	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
-	strFilePath += _strRelativePath;
-
-	FILE* pFile = nullptr;
-	_wfopen_s(&pFile, strFilePath.c_str(), L"wb");
-	assert(pFile);
-
-	// Animation 이름 읽기
-	// TODO::자주 사용하므로, 함수화 하는것이 좋아보임.
-	// TODO::Serialization 공부.
-	char szBuff[256] = {};
-	fscanf_s(pFile, "%s", szBuff, 256);
-	int i = 0;
-	while (true)
-	{
-		char c = (char)getc(pFile);
-		szBuff[i]
-	}
-
-
-	// 텍스쳐 읽기
-	// 텍스쳐 키값
-	fprintf(pFile, "[Texture Name] ");
-	strName = string(m_pTex->GetKey().begin(), m_pTex->GetKey().end());
-	fprintf(pFile, strName.c_str());
-	fprintf(pFile, "\n\n");
-
-
-	// 텍스쳐 상대 경로 읽기
-	fprintf(pFile, "[Texture Path] ");
-	strName = string(m_pTex->GetRelativePath().begin(), m_pTex->GetRelativePath().end());
-	fscanf(pFile, strName.c_str());
-	fprintf(pFile, "\n\n");
-
-
-	//Animation 모든 프레임 읽기.(vector)
-	//프레임 갯수
-	fprintf(pFile, "[Frame Count] ");
-	fprintf(pFile, "%d\n", (int)m_vecFrame.size());
-
-	//
-	for (size_t i = 0; i < m_vecFrame.size(); i++)
-	{
-		fprintf(pFile, "[Frame Index] ");
-		fprintf(pFile, "%d\n", (int)i);
-
-		fprintf(pFile, "[Slice Size] ");
-		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vSlice.x, (int)m_vecFrame[i].vSlice.y);
-
-		fprintf(pFile, "[Offset] ");
-		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vOffset.x, (int)m_vecFrame[i].vOffset.y);
-
-		fprintf(pFile, "[Duration] ");
-		fprintf(pFile, "%d\n", (int)m_vecFrame[i].fDuration);
-
-		fprintf(pFile, "[Left Top] ");
-		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vLT.x, (int)m_vecFrame[i].vLT.y);
-
-		fprintf(pFile, "\n");
-	}
-
-	fclose(pFile);
-}
+//void CAnimation::Save(const wstring& _strRelativePath)
+//{
+//	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
+//	strFilePath += _strRelativePath;
+//
+//	FILE* pFile = nullptr;
+//	_wfopen_s(&pFile, strFilePath.c_str(), L"wb");
+//	assert(pFile);
+//	
+//	// Animation 이름 저장.
+//	// TODO::자주 사용하므로, 함수화 하는것이 좋아보임.
+//	// TODO::Serialization 공부.
+//	fprintf(pFile, "[Animation Name]");
+//	string strName = string(m_strName.begin(), m_strName.end());
+//	fprintf(pFile, strName.c_str());
+//	fprintf(pFile, "\n\n");
+//
+//	// 텍스쳐 저장
+//	// 텍스쳐 키값
+//	fprintf(pFile, "[Texture Name]");
+//	strName = string(m_pTex->GetKey().begin(), m_pTex->GetKey().end());
+//	fprintf(pFile, strName.c_str());
+//	fprintf(pFile, "\n\n");
+//
+//
+//	// 텍스쳐 상대 경로 저장
+//	fprintf(pFile, "[Texture Path]");
+//	strName = string(m_pTex->GetRelativePath().begin(), m_pTex->GetRelativePath().end());
+//	fprintf(pFile, strName.c_str());
+//	fprintf(pFile, "\n\n");
+//
+//
+//	//Animation 모든 프레임 저장.(vector)
+//	//프레임 갯수
+//	fprintf(pFile, "[Frame Count]");
+//	fprintf(pFile, "%d\n", (int)m_vecFrame.size());
+//
+//	//
+//	for (size_t i = 0; i < m_vecFrame.size(); i++)
+//	{
+//		fprintf(pFile, "[Frame_Index]");
+//		fprintf(pFile, "%d\n", (int)i);
+//
+//		fprintf(pFile, "[Slice_Size]");
+//		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vSlice.x, (int)m_vecFrame[i].vSlice.y);
+//
+//		fprintf(pFile, "[Offset]");
+//		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vOffset.x, (int)m_vecFrame[i].vOffset.y);
+//
+//		fprintf(pFile, "[Duration]");
+//		fprintf(pFile, "%d\n", (int)m_vecFrame[i].fDuration);
+//
+//		fprintf(pFile, "[Left Top]");
+//		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vLT.x, (int)m_vecFrame[i].vLT.y);
+//
+//		fprintf(pFile, "\n");
+//		
+//	}
+//	fclose(pFile);
+//}
+//
+//void CAnimation::Load(const wstring& _strRelativePath)
+//{
+//	wstring strFilePath = CPathMgr::GetInst()->GetContentPath();
+//	strFilePath += _strRelativePath;
+//
+//	FILE* pFile = nullptr;
+//	_wfopen_s(&pFile, strFilePath.c_str(), L"wb");
+//	assert(pFile);
+//
+//	// Animation 이름 읽기
+//	// TODO::자주 사용하므로, 함수화 하는것이 좋아보임.
+//	// TODO::Serialization 공부.
+//	char szBuff[256] = {};
+//	fscanf_s(pFile, "%s", szBuff, 256);
+//	int i = 0;
+//	while (true)
+//	{
+//		char c = (char)getc(pFile);
+//		szBuff[i]
+//	}
+//
+//
+//	// 텍스쳐 읽기
+//	// 텍스쳐 키값
+//	fprintf(pFile, "[Texture Name] ");
+//	strName = string(m_pTex->GetKey().begin(), m_pTex->GetKey().end());
+//	fprintf(pFile, strName.c_str());
+//	fprintf(pFile, "\n\n");
+//
+//
+//	// 텍스쳐 상대 경로 읽기
+//	fprintf(pFile, "[Texture Path] ");
+//	strName = string(m_pTex->GetRelativePath().begin(), m_pTex->GetRelativePath().end());
+//	fscanf(pFile, strName.c_str());
+//	fprintf(pFile, "\n\n");
+//
+//
+//	//Animation 모든 프레임 읽기.(vector)
+//	//프레임 갯수
+//	fprintf(pFile, "[Frame Count] ");
+//	fprintf(pFile, "%d\n", (int)m_vecFrame.size());
+//
+//	//
+//	for (size_t i = 0; i < m_vecFrame.size(); i++)
+//	{
+//		fprintf(pFile, "[Frame Index] ");
+//		fprintf(pFile, "%d\n", (int)i);
+//
+//		fprintf(pFile, "[Slice Size] ");
+//		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vSlice.x, (int)m_vecFrame[i].vSlice.y);
+//
+//		fprintf(pFile, "[Offset] ");
+//		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vOffset.x, (int)m_vecFrame[i].vOffset.y);
+//
+//		fprintf(pFile, "[Duration] ");
+//		fprintf(pFile, "%d\n", (int)m_vecFrame[i].fDuration);
+//
+//		fprintf(pFile, "[Left Top] ");
+//		fprintf(pFile, "%d, %d\n", (int)m_vecFrame[i].vLT.x, (int)m_vecFrame[i].vLT.y);
+//
+//		fprintf(pFile, "\n");
+//	}
+//
+//	fclose(pFile);
+//}
 

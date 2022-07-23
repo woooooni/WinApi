@@ -1,15 +1,15 @@
 #pragma once
 
-class CObject;
+#include "CComponent.h"
 class CAnimation;
 class CTexture;
 
 class CAnimator
+	: public CComponent
 {
 private:
 	map<wstring, CAnimation*>	m_mapAnim;		// 모든 애니메이션.
 	CAnimation*					m_pCurAnim;		// 현재 재생중인 애니메이션.
-	CObject*					m_pOwner;		// Animator 소유 오브젝트.
 	bool						m_bRepeat;		// 반복재생 여부.
 	bool						m_bFlipX;		// 좌우반전 여부.
 	bool						m_bFlipY;		// 상하반전 여부.
@@ -21,7 +21,6 @@ public:
 	CAnimation* FindAnimation(const wstring& _strName);
 	void LoadAnimation(const wstring& _strRelativePath);
 	void Play(const wstring& _strName, bool _bRepeat);
-	CObject* GetObj() { return m_pOwner; }
 
 	void SetFlipX(bool _bFlipX) { m_bFlipX = _bFlipX; }
 	void SetFlipY(bool _bFlipY) { m_bFlipY = _bFlipY; }
@@ -31,15 +30,12 @@ public:
 
 public:
 	void update();
-	void finalupdate();
-	void render(HDC _dc);
+	virtual void finalupdate();
+	virtual void render(HDC _dc);
 
+	CLONE(CAnimator);
 public:
 	CAnimator();
 	~CAnimator();
-
-
-private:
-	friend class CObject;
 };
 

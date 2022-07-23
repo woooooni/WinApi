@@ -1,11 +1,11 @@
 #include "pch.h"
+#include "CComponent.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
 
 
 CAnimator::CAnimator()
 	:m_pCurAnim(nullptr)
-	,m_pOwner(nullptr)
 {
 }
 
@@ -43,7 +43,7 @@ CAnimation* CAnimator::FindAnimation(const wstring& _strName)
 void CAnimator::LoadAnimation(const wstring& _strRelativePath)
 {
 	CAnimation* pAnim = new CAnimation;
-	pAnim->Load(_strRelativePath);
+	//pAnim->Load(_strRelativePath);
 
 	pAnim->m_pAnimator = this;
 	m_mapAnim.insert(make_pair(pAnim->GetName(), pAnim));

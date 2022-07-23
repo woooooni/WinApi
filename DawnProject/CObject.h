@@ -2,27 +2,23 @@
 #include "global.h"
 #include "CCamera.h"
 
+class CComponent;
 class CCollider;
 class CAnimator;
 class CRigidBody;
+class CStateMachine;
 
 class CObject
 {
 private:
-	wstring		m_strName;
-	Vec2		m_vPos;
-	Vec2		m_vScale;
-	GROUP_TYPE	m_eType;
+	wstring			m_strName;
+	Vec2			m_vPos;
+	Vec2			m_vScale;
+	GROUP_TYPE		m_eType;
 
-	//Collider(Ãæµ¹) ÄÄÆ÷³ÍÆ®
-	CCollider*	m_pCollider;
+	CComponent*		m_arrComponent[(UINT)COMPONENT_TYPE::END];
+	bool			m_bAlive;
 
-	//Animaotr ÄÄÆ÷³ÍÆ®
-	CAnimator* m_pAnimator;
-
-	//RigidBody ÄÄÆ÷³ÍÆ®
-	CRigidBody* m_pRigidBody;
-	bool		m_bAlive;
 
 public:
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
@@ -41,7 +37,7 @@ public:
 
 public:
 	void CreateCollider();
-	CCollider* GetCollider() { return m_pCollider; }
+	CCollider* GetCollider() { return (CCollider*)m_arrComponent[(UINT)COMPONENT_TYPE::COLLIDER]; }
 
 	virtual void OnCollision(CCollider* _pOther) {}
 	virtual void OnCollisionEnter(CCollider* _pOther) {}
@@ -49,10 +45,13 @@ public:
 
 
 	void CreateAnimator();
-	CAnimator* GetAnimator() { return m_pAnimator; }
+	CAnimator* GetAnimator() { return (CAnimator*)m_arrComponent[(UINT)COMPONENT_TYPE::ANIMATOR]; }
 
 	void CreateRigidBody();
-	CRigidBody* GetRigidBody() { return m_pRigidBody; }
+	CRigidBody* GetRigidBody() { return (CRigidBody*)m_arrComponent[(UINT)COMPONENT_TYPE::RIGIDBODY]; }
+
+	void CreateStateMachine();
+	CStateMachine* GetStateMachine() { return (CStateMachine*)m_arrComponent[(UINT)COMPONENT_TYPE::STATEMACHINE]; }
 
 private:
 	void SetDead() { m_bAlive = false; }

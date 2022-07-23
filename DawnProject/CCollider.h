@@ -1,13 +1,14 @@
 #pragma once
-class CObject;
+#include "CComponent.h"
 
+class CObject;
 class CCollider
+	: public CComponent
 {
 
 private:
 	static UINT g_iNextId;
 
-	CObject*	m_pOwner;		//Collider를 소유하고 있는 오브젝트
 	Vec2		m_vOffsetPos;	//오브젝트로부터의 상대적 위치
 	Vec2		m_vFinalPos;	//오브젝트 마지막 위치
 	Vec2		m_vScale;		//Collider의 크기
@@ -29,13 +30,10 @@ public:
 	Vec2 GetScale() { return m_vScale; }
 	
 	Vec2 GetFinalPos() { return m_vFinalPos; }
-
-	CObject* GetObj() { return m_pOwner; }
-
 	void SetTrigger(bool _bTrigger) { m_bTrigger = _bTrigger; }
 public:
-	void finalupdate();
-	void render(HDC _dc);
+	virtual void finalupdate();
+	virtual void render(HDC _dc);
 
 public:
 	void OnCollision(CCollider* _pOther);					// 충돌 중 인경우 호출되는 함수.
@@ -53,6 +51,5 @@ public:
 	~CCollider();
 	CCollider(const CCollider& _origin);
 
-	friend class CObject;
 };
 

@@ -3,8 +3,7 @@
 #include "CTimeMgr.h"
 #include "CObject.h"
 CRigidBody::CRigidBody()
-	: m_pOwner(nullptr)
-	, m_fMass(1.f)
+	: m_fMass(1.f)
 	, m_fFricCoeff(100.f)
 	, m_vMaxVelocity(Vec2(200.f, 600.f))
 	, m_bGravity(true)
@@ -18,10 +17,13 @@ CRigidBody::~CRigidBody()
 }
 
 CRigidBody::CRigidBody(const CRigidBody& _origin)
-	: m_pOwner(_origin.m_pOwner)
-	, m_fMass(_origin.m_fMass)
+	: m_fMass(_origin.m_fMass)
+	, m_bGravity(_origin.m_bGravity)
+	, m_bGround(false)
+	, m_fFricCoeff(_origin.m_fFricCoeff)
 	, m_vAccelA(Vec2(0, 0))
 {
+
 }
 
 
@@ -31,8 +33,6 @@ void CRigidBody::finalupdate()
 
 	if (IsGravity() && IsGround() == false)
 		update_gravity();
-
-
 
 	//ÈûÀÇ Å©±â
 	float fForce = m_vForce.Length();

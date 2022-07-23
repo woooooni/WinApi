@@ -1,18 +1,18 @@
 #pragma once
 
+#include "CComponent.h"
+
 class CObject;
 
-class CRigidBody
+class CRigidBody :
+	public CComponent
 {
 private:
 	// F = M * A;
 	// V += A * DT
-
-	CObject*	m_pOwner;		//	RigidBody를 소유하고 있는 오브젝트.
-	
 	Vec2		m_vForce;		//	크기, 방향 벡터
 	Vec2		m_vAccel;		//	가속도
-	Vec2		m_vAccelA;		//  가속도 추가량
+	Vec2		m_vAccelA;		//  가속도 추가량CComponent
 	Vec2		m_vVelocity;	//	속도(속력 + 방향)
 	Vec2		m_vMaxVelocity;	//	최대속도
 
@@ -50,9 +50,10 @@ private:
 
 private:
 	void update_gravity();
-public:
-	void finalupdate();
 
+public:
+	virtual void finalupdate();
+	virtual void render(HDC _dc) { };
 
 
 
@@ -60,7 +61,5 @@ public:
 	CRigidBody();
 	~CRigidBody();
 	CRigidBody(const CRigidBody& _origin);
-
-	friend class CObject;
 };
 
